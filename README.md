@@ -1,0 +1,1 @@
+Hacktoberfest Repository Checker which checks if the given repository is participating or not@

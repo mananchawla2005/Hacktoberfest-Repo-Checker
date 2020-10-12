@@ -1,0 +1,40 @@
+.nav-link{
+    font-size: 1.3rem;
+    margin: 3px;
+    color: rgb(85, 83, 83)!important;
+}
+.navbar{
+    background-color: #fff;
+}
+.fa-bars{
+    color: rgb(85, 83, 83);
+    font-size: 30px !important;
+}
+.navbar-toggler{
+    outline: none !important;
+}
+.navbar-brand{
+    font-weight: 500 !important;
+}
+.navbar-brand span:hover{
+    color: white !important;
+}
+#banner{
+    padding: 20% 15%;
+  }
+.promo-title{
+    font-size: 4rem !important;
+    color: #9c4668;
+    font-weight: bolder;
+}
+h4{
+    color: #072540;
+}
+.btn{
+    background-color: #072540!important;
+}
+.status{
+    text-align: center;
+    /* padding: 0% 40%; */
+    font-size: 2.5rem;
+}
