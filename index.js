@@ -61,6 +61,38 @@ app.post('/check', async (req, res)=>{
     
 
 })
+app.get("/api", (req, res) => {
+    if(req.query.url==null) return res.sendStatus(404)
+    var owner = parseurl(req.query.url).pathname.split('/')[1];
+    var repository = parseurl(req.query.url).pathname.split('/')[2]
+    octokit.request('GET /repos/{owner}/{repo}/topics', {
+        owner: owner,
+        repo: repository,
+        mediaType: {
+          previews: [
+            'mercy'
+          ]
+        }
+      }).then(x=>{
+        if(x.data.names.includes('hacktoberfest')){
+            res.json({
+                "valid": true
+            })
+        }
+        else{
+            res.json({
+                "valid": false
+            })
+        }
+
+    }
+    ).catch(err=>{
+        res.json({
+            "valid": false
+        })
+    })
+    // res.json(["Tony","Lisa","Michael","Ginger","Food", req.query.url]);
+   });
 app.use(express.static(__dirname + '/public'));
 app.listen(8080, ()=>console.log('Listening on port 8080'))
 
