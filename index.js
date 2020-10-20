@@ -33,8 +33,14 @@ app.get('/', async (req, res)=>{
 
 })
 app.post('/check', async (req, res)=>{
+  try{
     var owner = parseurl(req.body.repo).pathname.split('/')[1];
     var repository = parseurl(req.body.repo).pathname.split('/')[2]
+  }
+  catch(err){
+    app.set('context', 'failed')
+    res.redirect('/')
+  }
     octokit.request('GET /repos/{owner}/{repo}/topics', {
         owner: owner,
         repo: repository,
