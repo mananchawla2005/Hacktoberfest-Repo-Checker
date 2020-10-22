@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link href="/css/styles.css" rel="stylesheet" type="text/css">
+  <link href="/css/dark-mode.css" rel="stylesheet" type="text/css">
   <script src="https://kit.fontawesome.com/0111ae8a1f.js" crossorigin="anonymous"></script>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -21,7 +22,7 @@
   </script>
 </head>
 
-<body>
+<body onload="getTheme()">
   <section class="header">
     <nav class="navbar fixed-top navbar-expand-lg navbar-light">
       <a class="navbar-brand" href="https://hacktoberfest.digitalocean.com">
@@ -116,6 +117,15 @@
         </div>
       </div>
     </form>
+
+    <div class="hack-switch">
+      <p>Dark Mode</p>
+      <label class="switch">
+          <input id="toggle-checkbox" type="checkbox" onclick="toogleMode()" title="Dark/light">
+          <span class="slider round"></span>
+      </label>
+    </div>
+    
     <br>
     <br>
     <!-- <label class="status" for="status">This reporitory is eligible for Hacktoberfest</label> -->
@@ -175,5 +185,18 @@
 <script>
   $('#exampleModal').modal('toggle')
 </script>
-
+<script>
+  function getTheme(){
+    if(localStorage.getItem('mode') === 'dark'){
+      document.querySelector('body').classList.add('dark');
+      document.querySelector('.hack-switch input').checked = true;
+    }else{
+      document.querySelector('body').classList.remove('dark');
+    }
+  }
+  function toogleMode(){
+    localStorage.setItem('mode', (localStorage.getItem('mode') || 'light') === 'light' ? 'dark' : 'light');
+    localStorage.getItem('mode') === 'dark' ? document.querySelector('body').classList.add('dark') : document.querySelector('body').classList.remove('dark');
+  }
+</script>
 </html>
