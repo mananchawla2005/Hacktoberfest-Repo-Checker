@@ -34,32 +34,54 @@ app.get('/', async (req, res)=>{
 })
 app.post('/check', async (req, res)=>{
     var owner = parseurl(req.body.repo).pathname.split('/')[1];
-    var repository = parseurl(req.body.repo).pathname.split('/')[2]
-    octokit.request('GET /repos/{owner}/{repo}/topics', {
-        owner: owner,
-        repo: repository,
-        mediaType: {
-          previews: [
-            'mercy'
-          ]
-        }
-      }).then(x=>{
-        if(x.data.names.includes('hacktoberfest')){
-            app.set('context', 'success')
-            res.redirect('/')
-        }
-        else{
+    var repository = parseurl(req.body.repo).pathname.split('/')[2];
+    var isBanned = false;
+
+    try {
+        const response = await octokit.request('GET /repos/{owner}/{repo}/issues', {
+                owner: owner,
+                repo: repository,
+                state: 'open',
+                sort: 'created',
+                direction: 'asc'
+            });
+            const issues = response.data;
+            issues.forEach(issue => {
+                if(issue.title == "Pull requests here won’t count toward Hacktoberfest."){
+                    isBanned = true;
+                }
+            });
+        } catch (err) {
             app.set('context', 'failed')
-            res.redirect('/')
+            return res.redirect('/')
         }
 
-    }
-    ).catch(err=>{
-        app.set('context', 'failed')
-        res.redirect('/')
-    })
-    
-
+        if(isBanned){
+            app.set('context', 'failed')
+            return res.redirect('/')
+        }else{
+            octokit.request('GET /repos/{owner}/{repo}/topics', {
+            owner: owner,
+            repo: repository,
+            mediaType: {
+                previews: [
+                    'mercy'
+                ]
+            }
+            }).then( x => {
+                if(x.data.names.includes('hacktoberfest')){
+                    app.set('context', 'success')
+                    res.redirect('/')
+                }
+                else{
+                    app.set('context', 'failed')
+                    res.redirect('/')
+                }
+            }).catch(err=>{
+                app.set('context', 'failed')
+                res.redirect('/')
+            });
+        }
 })
 app.get("/api", (req, res) => {
     if(req.query.url==null) return res.sendStatus(404)
