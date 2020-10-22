@@ -1,3 +1,5 @@
+
+
 .nav-link{
     font-size: 1.3rem;
     margin: 3px;
@@ -20,10 +22,10 @@
     color: white !important;
 }
 #banner{
-    padding: 20% 15%;
+     padding: 178px 26px;
   }
 .promo-title{
-    font-size: 4rem !important;
+    font-size: 4rem;
     color: #9c4668;
     font-weight: bolder;
 }
@@ -37,4 +39,21 @@ h4{
     text-align: center;
     /* padding: 0% 40%; */
     font-size: 2.5rem;
+}
+
+/* Media Queries */
+@media screen and (max-width:481px) {
+  
+    .promo-title {
+        font-size: 2rem;
+    }
+}
+
+
+@media screen and (max-width:1000px) {
+    
+    body{
+        width: 100%;
+    }
+    
 }
