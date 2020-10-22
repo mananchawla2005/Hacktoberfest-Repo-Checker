@@ -106,38 +106,88 @@ app.post('/check', async (req, res)=>{
         }
     }
 })
-app.get("/api", (req, res) => {
+app.get("/api", async (req, res) => {
     if(req.query.url==null) return res.sendStatus(404)
     var owner = parseurl(req.query.url).pathname.split('/')[1];
-    var repository = parseurl(req.query.url).pathname.split('/')[2]
-    octokit.request('GET /repos/{owner}/{repo}/topics', {
-        owner: owner,
-        repo: repository,
-        mediaType: {
-          previews: [
-            'mercy'
-          ]
-        }
-      }).then(x=>{
-        if(x.data.names.includes('hacktoberfest')){
-            res.json({
-                "valid": true
+    var repository = parseurl(req.query.url).pathname.split('/')[2];
+    var isPrUrl = parseurl(req.query.url).pathname.includes('pull');
+    if(isPrUrl){
+        // PR URL
+        var prNumber = parseInt(parseurl(req.query.url).pathname.split('/')[4]);
+        try {
+            const response = await octokit.request('GET /repos/{owner}/{repo}/pulls/{pull_number}', {
+                owner: owner,
+                repo: repository,
+                pull_number: prNumber
+            });
+            if(response.data.state === 'closed'){
+                return res.json({
+                    "status": "accepted"
+                })
+            }else{
+                return res.json({
+                    "status": "open"
+                })
+            }
+        } catch (err) {
+            return res.json({
+                "status": "open"
             })
         }
-        else{
-            res.json({
+    }else{
+        var isBanned = false;
+        try {
+            const response = await octokit.request('GET /repos/{owner}/{repo}/issues', {
+                    owner: owner,
+                    repo: repository,
+                    sort: 'created',
+                    direction: 'asc'
+                });
+                const issues = response.data;
+                issues.forEach(issue => {
+                    if(issue.title == "Pull requests here won’t count toward Hacktoberfest."){
+                        isBanned = true;
+                    }
+                });
+        } catch (err) {
+            return res.json({
                 "valid": false
             })
         }
-
+    
+        if(isBanned){
+            return res.json({
+                "valid": false
+            })
+        }else{
+            octokit.request('GET /repos/{owner}/{repo}/topics', {
+            owner: owner,
+            repo: repository,
+            mediaType: {
+                previews: [
+                    'mercy'
+                ]
+            }
+            }).then( x => {
+                if(x.data.names.includes('hacktoberfest')){
+                    return res.json({
+                        "valid": true
+                    })
+                }
+                else{
+                    return res.json({
+                        "valid": false
+                    })
+                }
+            }).catch(err=>{
+                return res.json({
+                    "valid": false
+                })
+            });
+        }
     }
-    ).catch(err=>{
-        res.json({
-            "valid": false
-        })
-    })
     // res.json(["Tony","Lisa","Michael","Ginger","Food", req.query.url]);
-   });
+});
 app.use(express.static(__dirname + '/public'));
 app.listen(8080, ()=>console.log('Listening on port 8080'))
 
