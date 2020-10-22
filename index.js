@@ -41,7 +41,6 @@ app.post('/check', async (req, res)=>{
         const response = await octokit.request('GET /repos/{owner}/{repo}/issues', {
                 owner: owner,
                 repo: repository,
-                state: 'open',
                 sort: 'created',
                 direction: 'asc'
             });
