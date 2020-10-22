@@ -35,7 +35,6 @@ app.get('/', async (req, res)=>{
     }
 })
 app.post('/check', async (req, res)=>{
-  try{
     var owner = parseurl(req.body.repo).pathname.split('/')[1];
     var repository = parseurl(req.body.repo).pathname.split('/')[2];
     var isPrUrl = parseurl(req.body.repo).pathname.includes('pull');
@@ -58,9 +57,6 @@ app.post('/check', async (req, res)=>{
         } catch (err) {
             app.set('context', 'pr-open');
             return res.redirect('/');
-
-  
-
         }
     }else{
         var isBanned = false;
