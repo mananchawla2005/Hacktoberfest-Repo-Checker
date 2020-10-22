@@ -22,39 +22,62 @@ app.get('/', async (req, res)=>{
     else if(app.get('context')=="failed"){
         res.render('index', {show: 'failed'})
         app.set('context', 'idle')
-
-
+    }else if(app.get('context')=="pr-accepted"){
+        res.render('index', {show: 'pr-accepted'})
+        app.set('context', 'idle')
+    }else if(app.get('context')=="pr-open"){
+        res.render('index', {show: 'pr-open'})
+        app.set('context', 'idle')
     }
     else{
         res.render('index', {show: 'idle'})
         app.set('context', 'idle')
-
     }
-
 })
 app.post('/check', async (req, res)=>{
     var owner = parseurl(req.body.repo).pathname.split('/')[1];
     var repository = parseurl(req.body.repo).pathname.split('/')[2];
-    var isBanned = false;
-
-    try {
-        const response = await octokit.request('GET /repos/{owner}/{repo}/issues', {
+    var isPrUrl = parseurl(req.body.repo).pathname.includes('pull');
+    if(isPrUrl){
+        // PR URL
+        var prNumber = parseInt(parseurl(req.body.repo).pathname.split('/')[4]);
+        try {
+            const response = await octokit.request('GET /repos/{owner}/{repo}/pulls/{pull_number}', {
                 owner: owner,
                 repo: repository,
-                sort: 'created',
-                direction: 'asc'
+                pull_number: prNumber
             });
-            const issues = response.data;
-            issues.forEach(issue => {
-                if(issue.title == "Pull requests here won’t count toward Hacktoberfest."){
-                    isBanned = true;
-                }
-            });
+            if(response.data.state === 'closed'){
+                app.set('context', 'pr-accepted')
+                return res.redirect('/')
+            }else{
+                app.set('context', 'pr-open');
+                return res.redirect('/');
+            }
+        } catch (err) {
+            app.set('context', 'pr-open');
+            return res.redirect('/');
+        }
+    }else{
+        var isBanned = false;
+        try {
+            const response = await octokit.request('GET /repos/{owner}/{repo}/issues', {
+                    owner: owner,
+                    repo: repository,
+                    sort: 'created',
+                    direction: 'asc'
+                });
+                const issues = response.data;
+                issues.forEach(issue => {
+                    if(issue.title == "Pull requests here won’t count toward Hacktoberfest."){
+                        isBanned = true;
+                    }
+                });
         } catch (err) {
             app.set('context', 'failed')
             return res.redirect('/')
         }
-
+    
         if(isBanned){
             app.set('context', 'failed')
             return res.redirect('/')
@@ -81,6 +104,7 @@ app.post('/check', async (req, res)=>{
                 res.redirect('/')
             });
         }
+    }
 })
 app.get("/api", (req, res) => {
     if(req.query.url==null) return res.sendStatus(404)
