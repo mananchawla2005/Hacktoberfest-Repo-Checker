@@ -120,14 +120,27 @@ app.get("/api", async (req, res) => {
                 repo: repository,
                 pull_number: prNumber
             });
-            if(response.data.state === 'closed'){
-                return res.json({
-                    "status": "accepted"
-                })
+            const labels = response.data.labels;
+            const isHacktoberFestPr = false;
+            labels.forEach(label => {
+                if(label.name == 'hacktoberfest' || label.name == 'hacktoberfest-accepted'){
+                    isHacktoberFestPr = true;
+                }
+            });
+            if(isHacktoberFestPr){
+                if(response.data.state === 'closed'){
+                    return res.json({
+                        "status": "closed"
+                    }) 
+                }else{
+                    return res.json({
+                        "status": "open"
+                    });
+                }
             }else{
                 return res.json({
-                    "status": "open"
-                })
+                    "valid": false
+                });
             }
         } catch (err) {
             return res.json({
