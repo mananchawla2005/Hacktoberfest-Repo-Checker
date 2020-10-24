@@ -5,6 +5,7 @@ require('dotenv').config()
 const octokit = new Octokit({ auth: process.env.TOKEN });
 const express = require('express')
 const bodyParser = require('body-parser');
+const octoberChecker = require('./utils/octoberChecker');
 const app = express()
 app.use(session({secret: 'mySecret', resave: false, saveUninitialized: false}));
 
@@ -14,7 +15,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.set('view engine', 'ejs')
 app.get('/', async (req, res)=>{
-    if(app.get('context')=="success"){
+    if(octoberChecker.isNotOctober()) {
+        res.render('not-october')
+    }
+    else if(app.get('context')=="success"){
     // req.session.context=="idle"
     res.render('index', {show: 'success'})
     app.set('context', 'idle')
