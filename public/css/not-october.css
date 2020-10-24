@@ -1,0 +1,14 @@
+html, body {
+  height: 100%;
+}
+
+.alert-title {
+  font-size: 4rem;
+  color: #9c4668;
+  font-weight: bolder;
+}
+
+@media screen and (max-width: 500px) {
+  .alert-title { font-size: 3rem; }
+  .alert-description { font-size: 1rem; }
+}
