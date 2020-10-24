@@ -25,10 +25,11 @@
 
 **Step #6**   Your server should be running at `https://localhost:3000`
 
-### API
+
+## API
 - The project also has a public api currently in testing. You can access it at `hacktoberfest.cf/api?url=<url of repo>`
 
-### Contribute
+## Contribute
 - The project is open for contributions. You can make a issue or assign yourselves one and then can start working upon it.
 
 
