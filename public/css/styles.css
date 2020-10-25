@@ -32,6 +32,9 @@
 h4{
     color: #072540;
 }
+.repo-input{
+    max-width: 900px;
+}
 .btn{
     background-color: #072540!important;
 }
