@@ -2,31 +2,27 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hacktoberfest Repository Checker</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  <link href="/css/styles.css" rel="stylesheet" type="text/css">
-  <link href="/css/dark-mode.css" rel="stylesheet" type="text/css">
-  <script src="https://kit.fontawesome.com/0111ae8a1f.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacktoberfest Repository Checker</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="/css/styles.css" rel="stylesheet" type="text/css">
+    <link href="/css/dark-mode.css" rel="stylesheet" type="text/css">
+    <script src="https://kit.fontawesome.com/0111ae8a1f.js" crossorigin="anonymous"></script>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-  </script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
-  </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+    </script>
 </head>
 
 <body onload="getTheme()">
-  <section class="header">
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light">
-      <a class="navbar-brand" href="https://hacktoberfest.digitalocean.com">
-        <svg width="120" height="71" viewBox="0 0 470 431" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <section class="header">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="https://hacktoberfest.digitalocean.com">
+                <svg width="120" height="71" viewBox="0 0 470 431" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g clip-path="url(#clip0)">
             <path
               d="M112.835 246.094C109.33 240.776 102.138 239.325 96.8194 242.831C94.2811 244.523 92.468 247.122 91.8637 250.143C91.2593 253.165 91.8637 256.247 93.5559 258.846C94.6437 260.478 96.9403 262.351 98.9951 262.593V270.691C98.9951 272.988 97.0007 278.427 91.3197 278.427H70.3486V257.758C71.9199 257.093 73.3099 256.187 74.5186 254.857C78.7491 250.083 78.3261 242.77 73.5516 238.54C68.7772 234.309 61.4645 234.732 57.234 239.507C55.1792 241.803 54.1518 244.765 54.3331 247.847C54.5144 250.929 55.9044 253.769 58.201 255.824C58.4427 256.006 58.6845 256.247 58.9262 256.429C59.8932 257.154 60.9206 257.637 62.0084 258.06V285.377C60.3767 286.042 58.8053 287.009 57.5362 288.399C53.3057 293.174 53.7287 300.486 58.5032 304.717C58.7449 304.898 58.9866 305.14 59.2284 305.321C64.0028 308.947 70.832 308.343 74.8812 303.81C78.8096 299.398 78.8096 292.388 74.8208 288.46C74.2164 287.855 73.733 287.372 73.3099 287.009H91.501C102.682 287.009 107.637 277.581 107.637 271.175V263.258C108.363 262.956 109.088 262.654 109.753 262.17C109.994 261.989 110.236 261.807 110.478 261.626C112.654 259.934 114.104 257.577 114.708 254.797C115.192 251.715 114.587 248.632 112.835 246.094ZM60.558 247.484C60.4975 246.094 60.9206 244.704 61.8876 243.677C63.7611 241.622 66.8433 241.32 69.019 243.012C69.1398 243.072 69.2607 243.193 69.3212 243.254C71.4968 245.188 71.6781 248.512 69.7442 250.687C67.8103 252.863 64.4259 253.044 62.3106 251.11C61.2832 250.204 60.6788 248.874 60.558 247.484ZM70.0464 299.58C68.1124 301.755 64.7885 301.937 62.6128 300.003C60.4371 298.069 60.2558 294.745 62.1897 292.569C64.0632 290.514 67.1455 290.212 69.3212 291.904C69.442 291.965 69.5629 292.086 69.6233 292.146C71.799 294.08 72.0408 297.404 70.0464 299.58ZM108.363 253.528C108.06 254.918 107.275 256.066 106.126 256.852C104.978 257.637 103.528 257.879 102.138 257.637C100.748 257.335 99.539 256.55 98.8138 255.401C98.0281 254.253 97.7864 252.802 98.0281 251.412C98.2698 250.143 98.9346 249.055 99.962 248.33C100.083 248.27 100.204 248.149 100.325 248.089C102.742 246.457 106.066 247.122 107.637 249.599C108.423 250.687 108.665 252.138 108.363 253.528Z"
@@ -76,174 +72,170 @@
             </clipPath>
           </defs>
         </svg>
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fa fa-bars"></i>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active ml-auto">
-            <a class="nav-link" href="https://hacktoberfest.digitalocean.com/profile">START HACKING</a>
-          </li>
-          <li class="nav-item ml-auto">
-            <a class="nav-link" href="https://www.firsttimersonly.com/">FIRST TIMERS</a>
-          </li>
-          <li class="nav-item ml-auto">
-            <a class="nav-link" href="https://hacktoberfest.digitalocean.com">ABOUT</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </section>
-  <section id="banner">
-    <div class="container">
-      <div class="text-center">
-        <strong>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active ml-auto">
+                        <a class="nav-link" href="https://hacktoberfest.digitalocean.com/profile">START HACKING</a>
+                    </li>
+                    <li class="nav-item ml-auto">
+                        <a class="nav-link" href="https://www.firsttimersonly.com/">FIRST TIMERS</a>
+                    </li>
+                    <li class="nav-item ml-auto">
+                        <a class="nav-link" href="https://hacktoberfest.digitalocean.com">ABOUT</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+    <section id="banner">
+        <div class="container">
+            <div class="text-center">
+                <strong>
           <h1 class="promo-title text-center">Hacktoberfest</h1>
         </strong>
-        <h4>Repository Checker</h4>
-      </div>
-    </div>
-    <br>
-    <br>
-    <br>
-    <form method="POST" action="/check">
-      <div class="d-flex justify-content-center">
-        <div class="input-group input-group-lg repo-input">
-          <input type="text" name="repo" class="form-control" placeholder="https://github.com/digitalocean/hacktoberfest/" aria-label="Repository Url"
-            aria-describedby="basic-addon2" required>
-          <div class="input-group-append">
-            <input type="submit" class="btn btn-success" value="CHECK"></input>
-          </div>
+                <h4>Repository Checker</h4>
+            </div>
         </div>
-      </div>
-    </form>
+        <br>
+        <br>
+        <br>
+        <form method="POST" action="/check">
+            <div class="d-flex justify-content-center">
+                <div class="input-group input-group-lg repo-input">
+                    <input type="text" name="repo" class="form-control" placeholder="https://github.com/digitalocean/hacktoberfest/" aria-label="Repository Url" aria-describedby="basic-addon2" required>
+                    <div class="input-group-append">
+                        <input type="submit" class="btn btn-success" value="CHECK"></input>
+                    </div>
+                </div>
+            </div>
+        </form>
 
-    <div class="hack-switch">
-      <p>Dark Mode</p>
-      <label class="switch">
+        <div class="hack-switch">
+            <p>Dark Mode</p>
+            <label class="switch">
           <input id="toggle-checkbox" type="checkbox" onclick="toogleMode()" title="Dark/light">
           <span class="slider round"></span>
       </label>
-    </div>
-    
-    <br>
-    <br>
-    <!-- <label class="status" for="status">This reporitory is eligible for Hacktoberfest</label> -->
-    <!-- Modal -->
-    <% if(show=="success"){ %>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Congratulations!</h5>
-            <!-- <h5 class="modal-title" id="exampleModalLabel">Uh Oh!</h5> -->
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        </div>
+
+        <br>
+        <br>
+        <!-- <label class="status" for="status">This reporitory is eligible for Hacktoberfest</label> -->
+        <!-- Modal -->
+        <% if(show=="success"){ %>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Congratulations!</h5>
+                            <!-- <h5 class="modal-title" id="exampleModalLabel">Uh Oh!</h5> -->
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
-          </div>
-          <div class="modal-body">
-            This repository is eligible for Hacktoberfest.
-          </div>
-          <!-- <div class="modal-body">
+                        </div>
+                        <div class="modal-body">
+                            This repository is eligible for Hacktoberfest.
+                        </div>
+                        <!-- <div class="modal-body">
                 This repository is inelligible for Hacktoberfest.
               </div> -->
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <% } else if(show=="failed"){ %>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <!-- <h5 class="modal-title" id="exampleModalLabel">Congratulations!</h5> -->
-            <h5 class="modal-title" id="exampleModalLabel">Uh Oh!</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% } else if(show=="failed"){ %>
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <!-- <h5 class="modal-title" id="exampleModalLabel">Congratulations!</h5> -->
+                                <h5 class="modal-title" id="exampleModalLabel">Uh Oh!</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
-          </div>
-          <!-- <div class="modal-body">
+                            </div>
+                            <!-- <div class="modal-body">
                   This repository is eligible for Hacktoberfest.
                 </div> -->
-          <div class="modal-body">
-            This repository is inelligible for Hacktoberfest.
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-        <% } else if(show=="pr-accepted") { %> 
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <!-- <h5 class="modal-title" id="exampleModalLabel">Congratulations!</h5> -->
-                  <h5 class="modal-title" id="exampleModalLabel">Pull Request Accepted!</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <div class="modal-body">
+                                This repository is inelligible for Hacktoberfest.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                            <% } else if(show=="pr-accepted") { %>
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <!-- <h5 class="modal-title" id="exampleModalLabel">Congratulations!</h5> -->
+                                                <h5 class="modal-title" id="exampleModalLabel">Pull Request Accepted!</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
-                </div>
-                <!-- <div class="modal-body">
+                                            </div>
+                                            <!-- <div class="modal-body">
                             Pull Request Accepted & closed
                           </div> -->
-                <div class="modal-body">
-                  Your pull request has been successfully accepted and Closed.
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        <% } else if(show=="pr-open") { %>
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <!-- <h5 class="modal-title" id="exampleModalLabel">Congratulations!</h5> -->
-                  <h5 class="modal-title" id="exampleModalLabel">Pull Request is Open!</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <div class="modal-body">
+                                                Your pull request has been successfully accepted and Closed.
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } else if(show=="pr-open") { %>
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <!-- <h5 class="modal-title" id="exampleModalLabel">Congratulations!</h5> -->
+                                                    <h5 class="modal-title" id="exampleModalLabel">Pull Request is Open!</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
-                </div>
-                <!-- <div class="modal-body">
+                                                </div>
+                                                <!-- <div class="modal-body">
                                       Pull Request is open
                                     </div> -->
-                <div class="modal-body">
-                  This Pull request is still open.
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        <% } %>
-        
-      </section>
+                                                <div class="modal-body">
+                                                    This Pull request is still open.
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% } %>
+
+    </section>
 </body>
 <script>
-  $('#exampleModal').modal('toggle')
+    $('#exampleModal').modal('toggle')
 </script>
 <script>
-  function getTheme(){
-    if(localStorage.getItem('mode') === 'dark'){
-      document.querySelector('body').classList.add('dark');
-      document.querySelector('.hack-switch input').checked = true;
-    }else{
-      document.querySelector('body').classList.remove('dark');
+    function getTheme() {
+        if (localStorage.getItem('mode') === 'dark') {
+            document.querySelector('body').classList.add('dark');
+            document.querySelector('.hack-switch input').checked = true;
+        } else {
+            document.querySelector('body').classList.remove('dark');
+        }
     }
-  }
-  function toogleMode(){
-    localStorage.setItem('mode', (localStorage.getItem('mode') || 'light') === 'light' ? 'dark' : 'light');
-    localStorage.getItem('mode') === 'dark' ? document.querySelector('body').classList.add('dark') : document.querySelector('body').classList.remove('dark');
-  }
+
+    function toogleMode() {
+        localStorage.setItem('mode', (localStorage.getItem('mode') || 'light') === 'light' ? 'dark' : 'light');
+        localStorage.getItem('mode') === 'dark' ? document.querySelector('body').classList.add('dark') : document.querySelector('body').classList.remove('dark');
+    }
 </script>
+
 </html>

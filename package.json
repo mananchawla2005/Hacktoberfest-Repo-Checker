@@ -1,22 +1,36 @@
 {
-  "name": "ValidChecker",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@octokit/core": "^3.1.2",
-    "body-parser": "^1.19.0",
-    "dotenv": "^8.2.0",
-    "ejs": "^3.1.5",
-    "express": "^4.17.1",
-    "express-session": "^1.17.1",
-    "github-api": "^3.3.0",
-    "parse-url": "^5.0.2"
-  }
+    "name": "validchecker",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon index.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@octokit/core": "^3.1.2",
+        "body-parser": "^1.19.0",
+        "dotenv": "^8.2.0",
+        "ejs": "^3.1.5",
+        "express": "^4.17.1",
+        "express-session": "^1.17.1",
+        "github-api": "^3.3.0",
+        "nodemon": "^2.0.6",
+        "parse-url": "^5.0.2"
+    },
+    "devDependencies": {
+        "prettier": "2.1.2"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "./src/*.{js,jsx,ts,tsx}": [
+            "npx prettier --write ."
+        ]
+    }
 }
