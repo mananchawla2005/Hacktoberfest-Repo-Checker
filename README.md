@@ -36,7 +36,7 @@
 - The project also has a public api currently in testing. You can access it at `hacktoberfest.cf/api?url=<url of repo>`
 
 ### 💕Contributing
-- The project is open for contributions. You can make a issue or assign yourselves one and then can start working upon it.
+- The project is open for contributions. You can make a issue or assign yourselves one and then can start working upon it. The project uses node.js for serving the files in combination with ejs as the templating engine. While making a pull request, make sure to pr to the dev branch rather than the master branch.
 
 
 
