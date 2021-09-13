@@ -1,19 +1,28 @@
+// Require all the dependencies necessary for this project:
+require('dotenv').config();
 const { Octokit } = require("@octokit/core");
 const session = require('express-session');
-const parseurl = require('parse-url')
-require('dotenv').config()
+const parseurl = require('parse-url');
 const octokit = new Octokit({ auth: process.env.TOKEN });
-const express = require('express')
+const express = require('express');
 const bodyParser = require('body-parser');
 const octoberChecker = require('./utils/octoberChecker');
-const app = express()
-app.use(session({secret: 'mySecret', resave: false, saveUninitialized: false}));
 
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
-// parse application/json
-app.use(bodyParser.json())
-app.set('view engine', 'ejs')
+
+
+// Initial setup for the Server:
+const app = express();
+app.use(session({secret: 'mySecret', resave: false, saveUninitialized: false}));
+app.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-form-urlencoded
+app.use(bodyParser.json()); // parse application/json
+app.use(express.static(__dirname + '/public'));
+app.set('view engine', 'ejs');
+
+
+
+// Handle HTTP Requests:
+
+// Handle 'GET' request made on the '/' route:
 app.get('/', async (req, res)=>{
     if(octoberChecker.isNotOctober()) {
         res.render('not-october')
@@ -38,6 +47,8 @@ app.get('/', async (req, res)=>{
         app.set('context', 'idle')
     }
 })
+
+// Handle 'POST' request made on the '/check' route:
 app.post('/check', async (req, res)=>{
     var owner = parseurl(req.body.repo).pathname.split('/')[1];
     var repository = parseurl(req.body.repo).pathname.split('/')[2];
@@ -110,6 +121,8 @@ app.post('/check', async (req, res)=>{
         }
     }
 })
+
+// Handle 'GET' request made on the '/api' route:
 app.get("/api", async (req, res) => {
     if(req.query.url==null) return res.sendStatus(404)
     var owner = parseurl(req.query.url).pathname.split('/')[1];
@@ -205,8 +218,11 @@ app.get("/api", async (req, res) => {
     }
     // res.json(["Tony","Lisa","Michael","Ginger","Food", req.query.url]);
 });
-app.use(express.static(__dirname + '/public'));
-app.listen(8080, ()=>console.log('Listening on port 8080'))
+
+
+
+// Enable client to listen to the appropriate port:
+app.listen(8080, () => console.log('Listening on port 8080'));
 
 
 
