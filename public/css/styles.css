@@ -23,3 +23,23 @@ body {
   right: 3% !important;
   transform: translateY(-50%);
 }
+.custom-link {
+  transition: 0.1s ease-out;
+  position: relative;
+}
+.custom-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 0%;
+  border: 2px solid transparent;
+  transition: 0.2s ease-out;
+}
+.custom-link:hover {
+  font-weight: 700;
+}
+.custom-link:hover::after {
+  border: 2px solid #F74700;
+  width: 100%;
+}
