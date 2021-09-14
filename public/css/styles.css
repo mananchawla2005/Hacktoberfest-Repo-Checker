@@ -1,83 +1,25 @@
 body {
-  background-color: #f4f0e1;
   overflow: hidden;
   display: grid;
   place-items: center;
-  height: 95vh;
+  height: 90vh;
 }
 * {
   user-select: none;
 }
-.nav-link {
-  font-size: 1.3rem;
-  margin: 0 16px;
-  color: #ed4634 !important;
-  font-weight: 700;
-}
-.navbar {
-  background-color: #f4f0e1;
-  padding: 10px 30px !important;
-}
-.navbar-toggler {
-  outline: none !important;
-}
-.navbar-brand {
-  font-weight: 500 !important;
-}
-.navbar-brand span:hover {
-  color: white !important;
-}
-.promo-title {
-  font-size: 4rem;
-  color: #9c4668;
-  font-weight: bolder;
-}
-h4 {
-  color: #072540;
-}
-.repo-input {
-  max-width: 900px;
-}
-.btn {
-  background-color: #072540 !important;
-}
-.status {
-  text-align: center;
-  /* padding: 0% 40%; */
-  font-size: 2.5rem;
-}
 .custom-search-input {
   border: none;
-  width: 50vw;
   height: 69px;
   padding: 0 30px;
   margin: auto;
-  position: relative;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
   outline: none !important;
 }
 .custom-search-button {
-  background-color: #ed4634;
   width: 100px;
   height: 42px;
   border: none;
   outline: none;
   color: white;
-  position: absolute;
-  right: 5%;
-  top: 50%;
+  right: 3% !important;
   transform: translateY(-50%);
-}
-
-/* Media Queries */
-@media screen and (max-width: 481px) {
-  .promo-title {
-    font-size: 2rem;
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  body {
-    width: 100%;
-  }
 }

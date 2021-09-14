@@ -5,26 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hacktoberfest Repository Checker</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link href="/css/styles.css" rel="stylesheet" type="text/css">
   <link href="/css/dark-mode.css" rel="stylesheet" type="text/css">
-  <script src="https://kit.fontawesome.com/0111ae8a1f.js" crossorigin="anonymous"></script>
-
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-  </script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
-  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 
-<body>
+<body class="bg-light">
+  <!-- Navbar -->
   <section class="header">
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light">
+    <!-- <nav class="navbar fixed-top navbar-expand-lg navbar-light custom-nav">
       <a class="navbar-brand" href="https://hacktoberfest.digitalocean.com">
         <img src="favicon.png" alt="HacktoberFest-2021">
       </a>
@@ -45,16 +35,38 @@
           </li>
         </ul>
       </div>
+    </nav> -->
+
+    <nav class="navbar fixed-top navbar-expand-lg px-5">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="https://hacktoberfest.digitalocean.com">
+          <img src="favicon.png" alt="HacktoberFest-2021">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link text-capitalize theme-light-orange-link mx-3 fs-5" href="https://hacktoberfest.digitalocean.com/profile">start Hacking</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-capitalize theme-light-orange-link mx-3 fs-5" href="https://www.firsttimersonly.com/">first timers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-capitalize theme-light-orange-link mx-3 fs-5" href="https://hacktoberfest.digitalocean.com">about</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </nav>
   </section>
+
+<!-- Banner -->
   <section id="banner">
     <div class="container">
       <div class="text-center">
-        <!-- <strong> -->
-          <!-- <h1 class="promo-title text-center">Hacktoberfest</h1> -->
-        <!-- </strong> -->
-        <!-- <h4>Repository Checker</h4> -->
-        <img src="logo-hacktoberfest-full.7d5e2645.svg" alt="hacktoberfest-logo" style="width:50vw;">
+        <img src="logoLight.svg" data-theme="light" class="hacktoberfest-logo w-50" alt="hacktoberfest-logo">
       </div>
     </div>
     <br>
@@ -62,29 +74,22 @@
     <br>
     <form method="POST" action="/check">
       <div class="d-flex justify-content-center">
-        <div class="input-group input-group-lg repo-input">
-          <input type="url" name="repo" class="none rounded-pill custom-search-input" placeholder="Enter Repository Link..." aria-label="Repository Url"
+        <div class="input-group input-group-lg repo-input w-50">
+          <input type="url" name="repo" class="none rounded-pill custom-search-input position-relative w-100 shadow-lg" placeholder="Enter Repository Link..." aria-label="Repository Url"
             aria-describedby="basic-addon2" required>
-          <div class="input-group-append">
-            <input type="submit" class="custom-search-button rounded-pill" value="CHECK"></input>
-          </div>
+          <input type="submit" class="custom-search-button rounded-pill text-capitalize position-absolute top-50 theme-light-orange" value="check"></input>
         </div>
       </div>
     </form>
 
     <div class="theme-toggler-container">
-      <button><i class="fa fa-moon"></i></button>
+      <button class="theme-toggler-button theme-light-orange shadow-lg"><i class="bi bi-moon-fill theme-toggler-icon"></i></button>
     </div>
-    <!-- <div class="hack-switch">
-      <p>Dark Mode</p>
-      <label class="switch">
-          <input id="toggle-checkbox" type="checkbox" onclick="toogleMode()" title="Dark/light">
-          <span class="slider round"></span>
-      </label>
-    </div> -->
+
+    <div class="position-fixed bottom-0 end-0 start-0">
+      <p class="text-center theme-copyright">This Website is made under Hacktoberfest 2021. Logo Copyright is reserved by Digital Ocean.</p>
+    </div>
     
-    <br>
-    <br>
     <!-- <label class="status" for="status">This reporitory is eligible for Hacktoberfest</label> -->
     <!-- Modal -->
     <% if(show=="success"){ %>
@@ -184,6 +189,46 @@
         
       </section>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script>
+  const themeTogglerButton = document.querySelector(".theme-toggler-button");
+  const themeTogglerIcon = document.querySelector(".theme-toggler-icon");
+  themeTogglerButton.addEventListener("click", () => {
+    const currentTheme = document.body.dataset.theme;
+    console.log(currentTheme);
+    toggleClasses()
+  })
+  function toggleClasses() {
+    const body = document.body;
+    const searchButton = document.querySelector(".custom-search-button");
+    const heroLogo = document.querySelector(".hacktoberfest-logo");
+    const navLinks = document.querySelectorAll(".nav-link");
+    const navbar = document.querySelector(".custom-nav");
+    body.classList.toggle("bg-dark");
+    body.classList.toggle("bg-light");
+    searchButton.classList.toggle("theme-light-orange");
+    searchButton.classList.toggle("theme-dark-green");
+    navLinks.forEach(navLink => {
+      navLink.classList.toggle("theme-light-orange-link");
+      navLink.classList.toggle("theme-dark-green-link");
+    })
+    themeTogglerButton.classList.toggle("theme-light-green");
+    themeTogglerButton.classList.toggle("theme-dark-orange");
+    navbar.classList.toggle("bg-light");
+    navbar.classList.toggle("bg-dark");
+    let currentTheme = heroLogo.dataset.theme;
+    if(currentTheme === "light") {
+      heroLogo.dataset.theme = "dark";
+      heroLogo.src = "logoDark.svg";
+    } else {
+      heroLogo.dataset.theme = "light";
+      heroLogo.src = "logoLight.svg";
+    }
+    currentTheme = heroLogo.dataset.theme
+    console.log(currentTheme)
+  }
+</script>
 <!-- <script>
   $('#exampleModal').modal('toggle')
 </script> -->
