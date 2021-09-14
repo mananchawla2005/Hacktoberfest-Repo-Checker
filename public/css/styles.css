@@ -40,6 +40,6 @@ body {
   font-weight: 700;
 }
 .custom-link:hover::after {
-  border: 2px solid #F74700;
+  border: 2px solid #f74700;
   width: 100%;
 }
