@@ -6,12 +6,12 @@ body {
   height: 95vh;
 }
 * {
-    user-select: none;
+  user-select: none;
 }
 .nav-link {
   font-size: 1.3rem;
   margin: 0 16px;
-  color: #ED4634 !important;
+  color: #ed4634 !important;
   font-weight: 700;
 }
 .navbar {

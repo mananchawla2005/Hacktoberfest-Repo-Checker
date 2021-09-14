@@ -101,21 +101,21 @@ body.dark #banner input {
     border-radius: 50%;
 } */
 :root {
-    --theme-green: #677662;
+  --theme-green: #677662;
 }
 .theme-toggler-container {
-    position: fixed;
-    bottom: 8vh;
-    right: 3vw;
+  position: fixed;
+  bottom: 8vh;
+  right: 3vw;
 }
 .theme-toggler-container > button {
-    border-radius: 50%;
-    min-width: 60px;
-    min-height: 60px;
-    border: none;
-    outline: none;
-    font-size: 1.5rem !important;
-    background-color: var(--theme-green);
-    color: white;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+  border-radius: 50%;
+  min-width: 60px;
+  min-height: 60px;
+  border: none;
+  outline: none;
+  font-size: 1.5rem !important;
+  background-color: var(--theme-green);
+  color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }

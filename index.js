@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.set("view engine", "ejs");
 app.get("/", async (req, res) => {
   if (octoberChecker.isNotOctober()) {
-    res.render("index", {show: "idle"});
+    res.render("index", { show: "idle" });
   } else if (app.get("context") == "success") {
     // req.session.context=="idle"
     res.render("index", { show: "success" });
