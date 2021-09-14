@@ -1,13 +1,12 @@
 :root {
-    --theme-light-bg: #F4F0E1; 
-    --theme-light-green: #677662;
-    --theme-light-orange: #F74700;
-    --theme-copyright: #D2D1C4;
+  --theme-light-bg: #f4f0e1;
+  --theme-light-green: #677662;
+  --theme-light-orange: #f74700;
+  --theme-copyright: #d2d1c4;
 
-    --theme-dark-bg:#595852;
-    --theme-dark-green:#91A88C;
-    --theme-dark-orange: #B53A26;
-
+  --theme-dark-bg: #595852;
+  --theme-dark-green: #91a88c;
+  --theme-dark-orange: #b53a26;
 }
 .theme-toggler-container {
   position: fixed;
@@ -15,39 +14,39 @@
   right: 3vw;
 }
 .theme-toggler-button {
-    border-radius: 50%;
-    min-width: 60px;
-    min-height: 60px;
-    border: none;
-    outline: none !important;
-    font-size: 1.5rem !important;
-    background-color: var(--theme-light-green);
-    color: white;
+  border-radius: 50%;
+  min-width: 60px;
+  min-height: 60px;
+  border: none;
+  outline: none !important;
+  font-size: 1.5rem !important;
+  background-color: var(--theme-light-green);
+  color: white;
 }
 .bg-light {
-    background-color: var(--theme-light-bg) !important;
+  background-color: var(--theme-light-bg) !important;
 }
 .bg-dark {
-    background-color: var(--theme-dark-bg) !important;
+  background-color: var(--theme-dark-bg) !important;
 }
 .theme-light-orange {
-    background-color:var(--theme-light-orange) !important;
+  background-color: var(--theme-light-orange) !important;
 }
 .theme-light-orange-link {
-    color:var(--theme-light-orange) !important;
+  color: var(--theme-light-orange) !important;
 }
 .theme-dark-green-link {
-    color: var(--theme-dark-green) !important;
+  color: var(--theme-dark-green) !important;
 }
 .theme-dark-orange {
-    background-color: var(--theme-dark-orange) !important;
+  background-color: var(--theme-dark-orange) !important;
 }
 .theme-light-green {
-    background-color: var(--theme-light-green) !important;
+  background-color: var(--theme-light-green) !important;
 }
 .theme-dark-green {
-    background-color: var(--theme-dark-green) !important;
+  background-color: var(--theme-dark-green) !important;
 }
 .theme-copyright {
-    color: var(--theme-copyright) !important;
+  color: var(--theme-copyright) !important;
 }
