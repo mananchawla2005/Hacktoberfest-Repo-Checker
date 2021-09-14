@@ -1,62 +1,83 @@
-
-
-.nav-link{
-    font-size: 1.3rem;
-    margin: 3px;
-    color: rgb(85, 83, 83)!important;
+body {
+  background-color: #f4f0e1;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  height: 95vh;
 }
-.navbar{
-    background-color: #fff;
+* {
+    user-select: none;
 }
-.fa-bars{
-    color: rgb(85, 83, 83);
-    font-size: 30px !important;
+.nav-link {
+  font-size: 1.3rem;
+  margin: 0 16px;
+  color: #ED4634 !important;
+  font-weight: 700;
 }
-.navbar-toggler{
-    outline: none !important;
+.navbar {
+  background-color: #f4f0e1;
+  padding: 10px 30px !important;
 }
-.navbar-brand{
-    font-weight: 500 !important;
+.navbar-toggler {
+  outline: none !important;
 }
-.navbar-brand span:hover{
-    color: white !important;
+.navbar-brand {
+  font-weight: 500 !important;
 }
-#banner{
-     padding: 178px 26px;
-  }
-.promo-title{
-    font-size: 4rem;
-    color: #9c4668;
-    font-weight: bolder;
+.navbar-brand span:hover {
+  color: white !important;
 }
-h4{
-    color: #072540;
+.promo-title {
+  font-size: 4rem;
+  color: #9c4668;
+  font-weight: bolder;
 }
-.repo-input{
-    max-width: 900px;
+h4 {
+  color: #072540;
 }
-.btn{
-    background-color: #072540!important;
+.repo-input {
+  max-width: 900px;
 }
-.status{
-    text-align: center;
-    /* padding: 0% 40%; */
-    font-size: 2.5rem;
+.btn {
+  background-color: #072540 !important;
+}
+.status {
+  text-align: center;
+  /* padding: 0% 40%; */
+  font-size: 2.5rem;
+}
+.custom-search-input {
+  border: none;
+  width: 50vw;
+  height: 69px;
+  padding: 0 30px;
+  margin: auto;
+  position: relative;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  outline: none !important;
+}
+.custom-search-button {
+  background-color: #ed4634;
+  width: 100px;
+  height: 42px;
+  border: none;
+  outline: none;
+  color: white;
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 /* Media Queries */
-@media screen and (max-width:481px) {
-  
-    .promo-title {
-        font-size: 2rem;
-    }
+@media screen and (max-width: 481px) {
+  .promo-title {
+    font-size: 2rem;
+  }
 }
 
-
-@media screen and (max-width:1000px) {
-    
-    body{
-        width: 100%;
-    }
-    
+@media screen and (max-width: 1000px) {
+  body {
+    width: 100%;
+  }
 }
