@@ -52,7 +52,7 @@
   color: var(--theme-copyright) !important;
 }
 @media screen and (max-height: 500px) {
-  .theme-toggler-container  {
+  .theme-toggler-container {
     bottom: 0vh;
   }
 }
