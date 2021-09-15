@@ -9,12 +9,13 @@
   <link href="/css/dark-mode.css" rel="stylesheet" type="text/css">
   <link href="/css/styles.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 
 <body class="bg-light">
   <!-- Navbar -->
   <section class="header">
-    <nav class="navbar fixed-top navbar-expand-lg px-5">
+    <nav class="navbar fixed-top navbar-expand-lg px-5 custom-nav">
       <div class="container-fluid">
         <a class="navbar-brand" href="https://hacktoberfest.digitalocean.com">
           <img src="favicon.png" alt="HacktoberFest-2021">
@@ -43,7 +44,7 @@
   <section id="banner">
     <div class="container">
       <div class="text-center">
-        <img src="logoLight.svg" data-theme="light" class="hacktoberfest-logo w-50" alt="hacktoberfest-logo">
+        <img src="logoLight.svg" data-theme="light" class="hacktoberfest-logo w-75" alt="hacktoberfest-logo">
       </div>
     </div>
     <br>
@@ -51,7 +52,7 @@
     <br>
     <form method="POST" action="/check">
       <div class="d-flex justify-content-center">
-        <div class="input-group input-group-lg repo-input w-50">
+        <div class="input-group input-group-lg repo-input w-75">
           <input type="url" name="repo" class="none rounded-pill custom-search-input position-relative w-100 shadow-lg" placeholder="Enter Repository Link..." aria-label="Repository Url"
             aria-describedby="basic-addon2" required>
           <input type="submit" class="custom-search-button rounded-pill text-capitalize position-absolute top-50 theme-light-orange" value="check"></input>
@@ -171,19 +172,28 @@
 <script>
   const themeTogglerButton = document.querySelector(".theme-toggler-button");
   const themeTogglerIcon = document.querySelector(".theme-toggler-icon");
+  const theme = localStorage.getItem("theme")
+  if(theme) {
+    // console.log("current theme is",theme)
+    if(theme === "dark") {
+      toggleClasses()
+    }
+  }
   themeTogglerButton.addEventListener("click", () => {
-    const currentTheme = document.body.dataset.theme;
-    console.log(currentTheme);
     toggleClasses()
   })
+
+  function saveToLocalStorage(value) {
+    localStorage.setItem("theme", value);
+  }
   function toggleClasses() {
     const body = document.body;
     const searchButton = document.querySelector(".custom-search-button");
     const heroLogo = document.querySelector(".hacktoberfest-logo");
-    const navLinks = document.querySelectorAll(".nav-link");
+    const navLinks = document.querySelectorAll(".custom-link");
     const navbar = document.querySelector(".custom-nav");
-    body.classList.toggle("bg-dark");
     body.classList.toggle("bg-light");
+    body.classList.toggle("bg-dark");
     searchButton.classList.toggle("theme-light-orange");
     searchButton.classList.toggle("theme-dark-green");
     navLinks.forEach(navLink => {
@@ -203,24 +213,8 @@
       heroLogo.src = "logoLight.svg";
     }
     currentTheme = heroLogo.dataset.theme
-    console.log(currentTheme)
+    // console.log(currentTheme)
+    saveToLocalStorage(currentTheme)
   }
 </script>
-<!-- <script>
-  $('#exampleModal').modal('toggle')
-</script> -->
-<!-- <script>
-  function getTheme(){
-    if(localStorage.getItem('mode') === 'dark'){
-      document.querySelector('body').classList.add('dark');
-      document.querySelector('.hack-switch input').checked = true;
-    }else{
-      document.querySelector('body').classList.remove('dark');
-    }
-  }
-  function toogleMode(){
-    localStorage.setItem('mode', (localStorage.getItem('mode') || 'light') === 'light' ? 'dark' : 'light');
-    localStorage.getItem('mode') === 'dark' ? document.querySelector('body').classList.add('dark') : document.querySelector('body').classList.remove('dark');
-  }
-</script> -->
 </html>
