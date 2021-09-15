@@ -12,6 +12,7 @@
   position: fixed;
   bottom: 8vh;
   right: 3vw;
+  z-index: 5 !important;
 }
 .theme-toggler-button {
   border-radius: 50%;
@@ -49,4 +50,9 @@
 }
 .theme-copyright {
   color: var(--theme-copyright) !important;
+}
+@media screen and (max-height: 500px) {
+  .theme-toggler-container  {
+    bottom: 0vh;
+  }
 }

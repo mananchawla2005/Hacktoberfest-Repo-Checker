@@ -1,17 +1,20 @@
 body {
   overflow: hidden;
-  display: grid;
-  place-items: center;
-  height: 90vh;
+  height: 100vh;
 }
 * {
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.repo-input {
+  width: 90%;
+  margin: auto;
 }
 .custom-search-input {
   border: none;
   height: 69px;
-  padding: 0 30px;
-  margin: auto;
   outline: none !important;
 }
 .custom-search-button {
@@ -20,10 +23,10 @@ body {
   border: none;
   outline: none;
   color: white;
-  right: 3% !important;
-  transform: translateY(-50%);
 }
 .custom-link {
+  -webkit-transition: 0.1s ease-out;
+  -o-transition: 0.1s ease-out;
   transition: 0.1s ease-out;
   position: relative;
 }
@@ -34,6 +37,8 @@ body {
   left: 0px;
   width: 0%;
   border: 2px solid transparent;
+  -webkit-transition: 0.2s ease-out;
+  -o-transition: 0.2s ease-out;
   transition: 0.2s ease-out;
 }
 .custom-link:hover {
@@ -42,4 +47,21 @@ body {
 .custom-link:hover::after {
   border: 2px solid #f74700;
   width: 100%;
+}
+.copyright {
+  font-size: 0.7rem;
+  z-index: 0;
+}
+@media screen and (max-width: 400px) {
+  .custom-search-button {
+    width: 30%;
+  }
+}
+@media screen and (min-width: 980px) {
+  .hacktoberfest-logo {
+    width: 50% !important;
+  }
+  .repo-input {
+    width: 70% !important;
+  }
 }
