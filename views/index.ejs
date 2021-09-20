@@ -1,219 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hacktoberfest Repository Checker</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link href="/css/dark-mode.css" rel="stylesheet" type="text/css" />
+    <link href="/css/styles.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hacktoberfest Repository Checker</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link href="/css/dark-mode.css" rel="stylesheet" type="text/css">
-  <link href="/css/styles.css" rel="stylesheet" type="text/css">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-</head>
+  <body
+    class="
+      bg-light
+      d-flex
+      flex-column
+      align-content-center
+      justify-content-center
+    "
+  >
+    <!-- Modal -->
+    <div class="modal" tabindex="-1" id="custom-modal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-4 shadow-lg border-0 bg-light" style="border-radius: 10px;">
+          <div class="modal-header border-0">
+            <button
+              type="button"
+              class="btn-close p-2 rounded-circle theme-light-orange"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body d-flex align-items-center justify-content-center">
+            <img src="svg/modalLogo.svg" alt="modal Logo" width="350">
+          </div>
+          <div class="modal-footer border-0">
+            <div class="theme-dark-green p-4 w-100" style="border-radius: 10px;">
+              <div class="bg-white d-flex align-items-center justify-content-center rounded-pill">
+                <p class="px-4 py-2 px-lg-2 m-0 p-0" style="font-size: 0.9rem;">This repository is <span class="fw-bold theme-light-orange-link">eligible</span> for Hactoberfest 2021</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<body class="bg-light d-flex flex-column align-content-center justify-content-center">
-  <!-- Navbar -->
-  <section class="header">
-    <nav class="navbar fixed-top navbar-expand-lg px-3 px-lg-5 custom-nav bg-light">
+    <!-- Navbar -->
+    <nav
+      class="navbar fixed-top navbar-expand-lg px-3 px-lg-5 custom-nav bg-light"
+    >
       <div class="container-fluid">
         <a class="navbar-brand" href="https://hacktoberfest.digitalocean.com">
-          <img src="favicon.png" alt="HacktoberFest-2021" draggable="false">
+          <img
+            src="svg/logo.svg"
+            alt="HacktoberFest-2021"
+            draggable="false"
+            width="150"
+          />
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <!-- <span class="navbar-toggler-icon"></span> -->
           <i class="bi bi-list fs-1"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link custom-link text-capitalize theme-light-orange-link mx-3 fs-5" href="https://hacktoberfest.digitalocean.com/profile">start Hacking</a>
+              <a
+                class="
+                  nav-link
+                  custom-link
+                  text-capitalize
+                  theme-light-orange-link
+                  mx-3
+                  fs-5
+                "
+                href="https://hacktoberfest.digitalocean.com/profile"
+                >start Hacking</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link custom-link text-capitalize theme-light-orange-link mx-3 fs-5" href="https://www.firsttimersonly.com/">first timers</a>
+              <a
+                class="
+                  nav-link
+                  custom-link
+                  text-capitalize
+                  theme-light-orange-link
+                  mx-3
+                  fs-5
+                "
+                href="https://www.firsttimersonly.com/"
+                >first timers</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link custom-link text-capitalize theme-light-orange-link mx-3 fs-5" href="https://hacktoberfest.digitalocean.com">about</a>
+              <a
+                class="
+                  nav-link
+                  custom-link
+                  text-capitalize
+                  theme-light-orange-link
+                  mx-3
+                  fs-5
+                "
+                href="https://hacktoberfest.digitalocean.com"
+                >about</a
+              >
             </li>
           </ul>
         </div>
       </div>
     </nav>
-  </section>
 
-<!-- Banner -->
-  <section id="banner">
-    <div class="container">
-      <div class="text-center">
-        <img src="logoLight.svg" data-theme="light" class="hacktoberfest-logo w-75" alt="hacktoberfest-logo" draggable="false">
-      </div>
-    </div>
-    <br>
-    <br>
-    <br>
-    <form method="POST" action="/check">
-        <div class="repo-input bg-white rounded-pill d-flex flex-row align-items-center justify-content-between px-4">
-          <input type="url" name="repo" class="custom-search-input bg-transparent align-self-stretch pe-1 w-100" placeholder="Enter Repository Link" aria-label="Repository Url"
-            aria-describedby="basic-addon2" required>
-          <input type="submit" class="custom-search-button rounded-pill text-capitalize theme-light-orange flex-shrink-0 flex-grow-0" value="check"></input>
-        </div>
-    </form>
-
-    <div class="theme-toggler-container">
-      <button class="theme-toggler-button theme-light-orange shadow-lg"><i class="bi bi-moon-fill theme-toggler-icon"></i></button>
-    </div>
-
-    <div class="position-fixed bottom-0 end-0 start-0">
-      <p class="text-center theme-copyright copyright">This Website is made under Hacktoberfest 2021. Logo Copyright is reserved by Digital Ocean.</p>
-    </div>
-    
-    <!-- <label class="status" for="status">This reporitory is eligible for Hacktoberfest</label> -->
-    <!-- Modal -->
-    <% if(show=="success"){ %>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Congratulations!</h5>
-            <!-- <h5 class="modal-title" id="exampleModalLabel">Uh Oh!</h5> -->
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            This repository is eligible for Hacktoberfest.
-          </div>
-          <!-- <div class="modal-body">
-                This repository is inelligible for Hacktoberfest.
-              </div> -->
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
+    <!-- Banner -->
+    <section id="banner">
+      <div class="container pb-5">
+        <div class="text-center">
+          <img
+            src="logoLight.svg"
+            data-theme="light"
+            class="hacktoberfest-logo w-75"
+            alt="hacktoberfest-logo"
+            draggable="false"
+          />
         </div>
       </div>
-    </div>
-    <% } else if(show=="failed"){ %>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <!-- <h5 class="modal-title" id="exampleModalLabel">Congratulations!</h5> -->
-            <h5 class="modal-title" id="exampleModalLabel">Uh Oh!</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <!-- <div class="modal-body">
-                  This repository is eligible for Hacktoberfest.
-                </div> -->
-          <div class="modal-body">
-            This repository is inelligible for Hacktoberfest.
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-        <% } else if(show=="pr-accepted") { %> 
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <!-- <h5 class="modal-title" id="exampleModalLabel">Congratulations!</h5> -->
-                  <h5 class="modal-title" id="exampleModalLabel">Pull Request Accepted!</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <!-- <div class="modal-body">
-                            Pull Request Accepted & closed
-                          </div> -->
-                <div class="modal-body">
-                  Your pull request has been successfully accepted and Closed.
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        <% } else if(show=="pr-open") { %>
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <!-- <h5 class="modal-title" id="exampleModalLabel">Congratulations!</h5> -->
-                  <h5 class="modal-title" id="exampleModalLabel">Pull Request is Open!</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <!-- <div class="modal-body">
-                                      Pull Request is open
-                                    </div> -->
-                <div class="modal-body">
-                  This Pull request is still open.
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        <% } %>
-        
-      </section>
-</body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script>
-  const themeTogglerButton = document.querySelector(".theme-toggler-button");
-  const themeTogglerIcon = document.querySelector(".theme-toggler-icon");
-  const theme = localStorage.getItem("theme")
-  if(theme) {
-    // console.log("current theme is",theme)
-    if(theme === "dark") {
-      toggleClasses()
-    }
-  }
-  themeTogglerButton.addEventListener("click", () => {
-    toggleClasses()
-  })
+      <form method="POST" action="/check">
+        <div
+          class="
+            repo-input
+            bg-white
+            rounded-pill
+            d-flex
+            flex-row
+            align-items-center
+            justify-content-between
+            px-4
+          "
+        >
+          <input
+            type="url"
+            name="repo"
+            class="
+              custom-search-input
+              bg-transparent
+              align-self-stretch
+              pe-1
+              w-100
+            "
+            placeholder="Enter Repository Link"
+            aria-label="Repository Url"
+            aria-describedby="basic-addon2"
+            required
+          />
+          <input
+            type="submit"
+            class="
+              custom-search-button
+              rounded-pill
+              text-capitalize
+              theme-light-orange
+              flex-shrink-0 flex-grow-0
+            "
+            value="check"
+            data-bs-toggle="modal" 
+            data-bs-target="#custom-modal"
+          />
+        </div>
+      </form>
 
-  function saveToLocalStorage(value) {
-    localStorage.setItem("theme", value);
-  }
-  function toggleClasses() {
-    const body = document.body;
-    const searchButton = document.querySelector(".custom-search-button");
-    const heroLogo = document.querySelector(".hacktoberfest-logo");
-    const navLinks = document.querySelectorAll(".custom-link");
-    const navbar = document.querySelector(".custom-nav");
-    body.classList.toggle("bg-light");
-    body.classList.toggle("bg-dark");
-    searchButton.classList.toggle("theme-light-orange");
-    searchButton.classList.toggle("theme-dark-green");
-    navLinks.forEach(navLink => {
-      navLink.classList.toggle("theme-light-orange-link");
-      navLink.classList.toggle("theme-dark-green-link");
-    })
-    themeTogglerButton.classList.toggle("theme-light-green");
-    themeTogglerButton.classList.toggle("theme-dark-orange");
-    navbar.classList.toggle("bg-light");
-    navbar.classList.toggle("bg-dark");
-    let currentTheme = heroLogo.dataset.theme;
-    if(currentTheme === "light") {
-      heroLogo.dataset.theme = "dark";
-      heroLogo.src = "logoDark.svg";
-    } else {
-      heroLogo.dataset.theme = "light";
-      heroLogo.src = "logoLight.svg";
-    }
-    currentTheme = heroLogo.dataset.theme
-    // console.log(currentTheme)
-    saveToLocalStorage(currentTheme)
-  }
-</script>
+      <div class="theme-toggler-container">
+        <button class="theme-toggler-button theme-light-orange shadow-lg">
+          <i class="bi bi-moon-fill theme-toggler-icon"></i>
+        </button>
+      </div>
+
+      <div class="position-fixed bottom-0 end-0 start-0">
+        <p class="text-center theme-copyright copyright">
+          This Website is made under Hacktoberfest 2021. Logo Copyright is
+          reserved by Digital Ocean.
+        </p>
+      </div>
+    </section>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"
+  ></script>
+  <script src="/js/main.js" type="text/javascript" defer></script>
 </html>

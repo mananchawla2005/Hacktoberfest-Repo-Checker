@@ -224,4 +224,4 @@ app.get("/api", async (req, res) => {
   // res.json(["Tony","Lisa","Michael","Ginger","Food", req.query.url]);
 });
 app.use(express.static(__dirname + "/public"));
-app.listen(8080, () => console.log("Listening on port 8080"));
+app.listen(8000, () => console.log("Listening on port 8000"));
