@@ -6,7 +6,9 @@ const session = require("express-session");
 const parseurl = require("parse-url");
 const octokit = new Octokit({ auth: process.env.TOKEN });
 const octoberChecker = require("./utils/octoberChecker");
-app.use(session({ secret: "mySecret", resave: false, saveUninitialized: false }));
+app.use(
+  session({ secret: "mySecret", resave: false, saveUninitialized: false })
+);
 // parse application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: false }));
 // parse application/json
@@ -45,112 +47,232 @@ app.get("/", (req, res) => {
   //   return
   // }
   res.render("index");
-})
+});
 
-app.get("/api", async (req, res) => {
-  console.log("called api")
-  if (req.query.url == null) return res.sendStatus(404);
-  var owner = parseurl(req.query.url).pathname.split("/")[1];
-  var repository = parseurl(req.query.url).pathname.split("/")[2];
-  var isPrUrl = parseurl(req.query.url).pathname.includes("pull");
-  if (isPrUrl) {
-    // PR URL
-    var prNumber = parseInt(parseurl(req.query.url).pathname.split("/")[4]);
-    try {
-      const response = await octokit.request(
-        "GET /repos/{owner}/{repo}/pulls/{pull_number}",
-        {
-          owner: owner,
-          repo: repository,
-          pull_number: prNumber,
-        }
-      );
-      const labels = response.data.labels;
-      const isHacktoberFestPr = false;
-      labels.forEach((label) => {
-        if (
-          label.name == "hacktoberfest" ||
-          label.name == "hacktoberfest-accepted"
-        ) {
-          isHacktoberFestPr = true;
-        }
+// Methods
+function getRepositoryDetailsObject(URL) {
+  const owner = parseurl(URL).pathname.split("/")[1];
+  const repository = parseurl(URL).pathname.split("/")[2];
+  const isPrUrl = parseurl(URL).pathname.includes("pull");
+  const repoObj = {
+    owner: owner,
+    repository: repository,
+    isPrUrl: isPrUrl,
+    URL: URL,
+  };
+  return JSON.stringify(repoObj);
+}
+function checkEligibilityForHacktoberfest(response) {
+  // Getting All Labels from Response
+  const labels = response.data.labels;
+  let isHacktoberFestPr = false;
+  // Searching for hacktoberfest labels
+  labels.forEach((label) => {
+    if (
+      label.name == "hacktoberfest" ||
+      label.name == "hacktoberfest-accepted"
+    ) {
+      isHacktoberFestPr = true;
+    }
+  });
+  if (isHacktoberFestPr) {
+    if (response.data.state === "closed") {
+      return JSON.stringify({
+        status: 200,
+        isOpen: false,
+        isEligible: true,
+        valid: true,
       });
-      if (isHacktoberFestPr) {
-        if (response.data.state === "closed") {
-          return res.json({
-            status: "closed",
-          });
-        } else {
-          return res.json({
-            status: "open",
-          });
-        }
-      } else {
-        return res.json({
-          valid: false,
-        });
-      }
-    } catch (err) {
-      return res.json({
-        status: "open",
+    } else {
+      return JSON.stringify({
+        status: 200,
+        isOpen: true,
+        isEligible: true,
+        valid: true,
       });
     }
   } else {
-    var isBanned = false;
-    try {
-      const response = await octokit.request(
-        "GET /repos/{owner}/{repo}/issues",
-        {
-          owner: owner,
-          repo: repository,
-          sort: "created",
-          direction: "asc",
-        }
-      );
-      const issues = response.data;
-      issues.forEach((issue) => {
-        if (
-          issue.title == "Pull requests here won’t count toward Hacktoberfest."
-        ) {
-          isBanned = true;
-        }
-      });
-    } catch (err) {
-      return res.json({
-        valid: false,
-      });
+    return JSON.stringify({
+      status: 200,
+      isOpen: false,
+      isEligible: false,
+      valid: true,
+    });
+  }
+}
+async function getPRDetails(owner, repository, prNumber) {
+  const response = await octokit.request(
+    "GET /repos/{owner}/{repo}/pulls/{pull_number}",
+    {
+      owner: owner,
+      repo: repository,
+      pull_number: prNumber,
     }
+  );
+  return JSON.stringify(response);
+}
+async function handlePRURL({ owner, repository, isPrUrl, URL }) {
+  let prNumber = parseInt(parseurl(URL).pathname.split("/")[4]);
+  let resultObj = new Object();
+  try {
+    // Getting details corresponding to PR Number
+    await getPRDetails(owner, repository, prNumber)
+      .then((response) => {
+        // Check repository for Hacktoberfest
+        response = JSON.parse(response);
+        const hacktoberfestEligibilityData = JSON.parse(
+          checkEligibilityForHacktoberfest(response)
+        );
+        // console.log("printing hacktoberfestEligibilityData",hacktoberfestEligibilityData);
+        resultObj = hacktoberfestEligibilityData;
+      })
+      .catch((err) => {
+        console.log(err);
+        const obj = {
+          status: 404,
+          isOpen: false,
+          isEligible: false,
+          valid: false,
+        };
+        resultObj = obj;
+      });
+  } catch (err) {
+    console.log(err);
+    const obj = {
+      status: 404,
+      isOpen: false,
+      isEligible: false,
+      valid: false,
+    };
+    resultObj = obj;
+  }
+  // console.log("pritig from handlePRUEL",resultObj)
+  return resultObj;
+}
+async function getIssues(owner, repository) {
+  const response = await octokit.request("GET /repos/{owner}/{repo}/issues", {
+    owner: owner,
+    repo: repository,
+    sort: "created",
+    direction: "asc",
+  });
+  const issues = response.data;
+  return issues;
+}
+async function getTopics(owner, repository) {
+  const response = await octokit.request("GET /repos/{owner}/{repo}/topics", {
+    owner: owner,
+    repo: repository,
+    mediaType: { previews: ["mercy"] },
+  });
+  const topics = response.data;
+  return topics;
+}
+async function handleNonPRURL({ owner, repository, isPrUrl, URL }) {
+  let resultObj = new Object();
+  try {
+    console.log("in try block");
+    await getIssues(owner, repository)
+      .then((response) => {
+        let isBanned = false;
+        const issues = response;
+        issues.forEach((issue) => {
+          const banString =
+            "Pull requests here won’t count toward Hacktoberfest.";
 
-    if (isBanned) {
-      return res.json({
-        valid: false,
-      });
-    } else {
-      octokit
-        .request("GET /repos/{owner}/{repo}/topics", {
-          owner: owner,
-          repo: repository,
-          mediaType: {
-            previews: ["mercy"],
-          },
-        })
-        .then((x) => {
-          if (x.data.names.includes("hacktoberfest")) {
-            return res.json({
-              valid: true,
-            });
-          } else {
-            return res.json({
-              valid: false,
-            });
+          if (issue.title.toLowerCase() == banString.toLowerCase()) {
+            isBanned = true;
           }
-        })
-        .catch((err) => {
-          return res.json({
-            valid: false,
-          });
         });
-    }
+        return isBanned;
+      })
+      .then(async (isBanned) => {
+        console.log("is Banned", isBanned);
+        if (isBanned) {
+          // return false
+          resultObj = {
+            status: 200,
+            isOpen: false,
+            isEligible: false,
+            valid: false,
+          };
+        } else {
+          await getTopics(owner, repository)
+            .then((topics) => {
+              if (topics.names.includes("hacktoberfest")) {
+                // return res.json({
+                //   valid: true,
+                // });
+                resultObj = {
+                  status: 200,
+                  isOpen: true,
+                  isEligible: true,
+                  valid: true,
+                };
+              } else {
+                // return res.json({
+                //   valid: false,
+                // });
+                resultObj = {
+                  status: 200,
+                  isOpen: true,
+                  isEligible: false,
+                  valid: true,
+                };
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+              resultObj = {
+                status: 404,
+                isOpen: false,
+                isEligible: false,
+                valid: false,
+              };
+            });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        resultObj = {
+          status: 404,
+          isOpen: false,
+          isEligible: false,
+          valid: false,
+        };
+      });
+  } catch (err) {
+    console.log(err);
+    resultObj = {
+      status: 404,
+      isOpen: false,
+      isEligible: false,
+      valid: false,
+    };
+    // return res.json({
+    //   valid: false,
+    // });
+  }
+  console.log("resultObj", resultObj);
+  return resultObj;
+}
+
+app.get("/api", async (req, res) => {
+  const URL = req.query.url;
+  // Checking if URL is null
+  if (URL == null) {
+    return res.sendStatus(404);
+  }
+  // If not get owner, repository name
+  const repoObj = JSON.parse(getRepositoryDetailsObject(URL));
+  // Checking if URL is PR URL or not
+  if (repoObj.isPrUrl) {
+    // PR URL
+    handlePRURL(repoObj).then((response) => res.json(response));
+  } else {
+    handleNonPRURL(repoObj).then((response) => {
+      res.json(response);
+    });
   }
   // res.json(["Tony","Lisa","Michael","Ginger","Food", req.query.url]);
 });
