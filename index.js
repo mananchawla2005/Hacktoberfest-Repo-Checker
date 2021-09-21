@@ -64,6 +64,7 @@ function getRepositoryDetailsObject(URL) {
 }
 function checkEligibilityForHacktoberfest(response) {
   // Getting All Labels from Response
+  console.log(response)
   const labels = response.data.labels;
   let isHacktoberFestPr = false;
   // Searching for hacktoberfest labels
@@ -75,30 +76,12 @@ function checkEligibilityForHacktoberfest(response) {
       isHacktoberFestPr = true;
     }
   });
-  if (isHacktoberFestPr) {
-    if (response.data.state === "closed") {
-      return JSON.stringify({
-        status: 200,
-        isOpen: false,
-        isEligible: true,
-        valid: true,
-      });
-    } else {
-      return JSON.stringify({
-        status: 200,
-        isOpen: true,
-        isEligible: true,
-        valid: true,
-      });
-    }
-  } else {
-    return JSON.stringify({
-      status: 200,
-      isOpen: false,
-      isEligible: false,
-      valid: true,
-    });
-  }
+  return JSON.stringify({
+    status: response.status,
+    isOpen: !(response.data.state === "closed"),
+    isEligible: isHacktoberFestPr,
+    valid: (response.status == 200),
+  });
 }
 async function getPRDetails(owner, repository, prNumber) {
   const response = await octokit.request(
@@ -130,9 +113,9 @@ async function handlePRURL({ owner, repository, isPrUrl, URL }) {
         console.log(err);
         const obj = {
           status: 404,
-          isOpen: false,
-          isEligible: false,
-          valid: false,
+          isOpen: undefined,
+          isEligible: undefined,
+          valid: undefined,
         };
         resultObj = obj;
       });
@@ -140,9 +123,9 @@ async function handlePRURL({ owner, repository, isPrUrl, URL }) {
     console.log(err);
     const obj = {
       status: 404,
-      isOpen: false,
-      isEligible: false,
-      valid: false,
+      isOpen: undefined,
+      isEligible: undefined,
+      valid: undefined,
     };
     resultObj = obj;
   }
@@ -156,8 +139,13 @@ async function getIssues(owner, repository) {
     sort: "created",
     direction: "asc",
   });
+  // console.log("get Issues Response",response)
   const issues = response.data;
-  return issues;
+  const status = response.status
+  return {
+    issues : issues,
+    status : status
+  };
 }
 async function getTopics(owner, repository) {
   const response = await octokit.request("GET /repos/{owner}/{repo}/topics", {
@@ -165,6 +153,7 @@ async function getTopics(owner, repository) {
     repo: repository,
     mediaType: { previews: ["mercy"] },
   });
+  // console.log(response);
   const topics = response.data;
   return topics;
 }
@@ -175,7 +164,8 @@ async function handleNonPRURL({ owner, repository, isPrUrl, URL }) {
     await getIssues(owner, repository)
       .then((response) => {
         let isBanned = false;
-        const issues = response;
+        const issues = response.issues;
+        const status = response.status
         issues.forEach((issue) => {
           const banString =
             "Pull requests here won’t count toward Hacktoberfest.";
@@ -184,50 +174,41 @@ async function handleNonPRURL({ owner, repository, isPrUrl, URL }) {
             isBanned = true;
           }
         });
-        return isBanned;
+        return {
+          isBanned : isBanned,
+          status : status
+        };
       })
-      .then(async (isBanned) => {
+      .then(async (response) => {
+        const isBanned = response.isBanned
+        const status = response.status
         console.log("is Banned", isBanned);
         if (isBanned) {
           // return false
           resultObj = {
-            status: 200,
-            isOpen: false,
-            isEligible: false,
-            valid: false,
+            status: 15, //Blocked Error Code
+            isOpen: undefined,
+            isEligible: undefined,
+            valid: undefined,
           };
         } else {
           await getTopics(owner, repository)
             .then((topics) => {
-              if (topics.names.includes("hacktoberfest")) {
-                // return res.json({
-                //   valid: true,
-                // });
-                resultObj = {
-                  status: 200,
-                  isOpen: true,
-                  isEligible: true,
-                  valid: true,
-                };
-              } else {
-                // return res.json({
-                //   valid: false,
-                // });
-                resultObj = {
-                  status: 200,
-                  isOpen: true,
-                  isEligible: false,
-                  valid: true,
-                };
-              }
+              // console.log(topics);
+              resultObj = {
+                status: 200,
+                isOpen: undefined,
+                isEligible: topics.names.includes("hacktoberfest"),
+                valid: status == 200,
+              };
             })
             .catch((err) => {
               console.log(err);
               resultObj = {
                 status: 404,
-                isOpen: false,
-                isEligible: false,
-                valid: false,
+                isOpen: undefined,
+                isEligible: undefined,
+                valid: undefined,
               };
             });
         }
@@ -236,22 +217,19 @@ async function handleNonPRURL({ owner, repository, isPrUrl, URL }) {
         console.log(err);
         resultObj = {
           status: 404,
-          isOpen: false,
-          isEligible: false,
-          valid: false,
+          isOpen: undefined,
+          isEligible: undefined,
+          valid: undefined,
         };
       });
   } catch (err) {
     console.log(err);
     resultObj = {
       status: 404,
-      isOpen: false,
-      isEligible: false,
-      valid: false,
+      isOpen: undefined,
+      isEligible: undefined,
+      valid: undefined,
     };
-    // return res.json({
-    //   valid: false,
-    // });
   }
   console.log("resultObj", resultObj);
   return resultObj;
@@ -278,85 +256,85 @@ app.get("/api", async (req, res) => {
 });
 
 // POST Methods
-app.post("/check", async (req, res) => {
-  var owner = parseurl(req.body.repo).pathname.split("/")[1];
-  var repository = parseurl(req.body.repo).pathname.split("/")[2];
-  var isPrUrl = parseurl(req.body.repo).pathname.includes("pull");
-  if (isPrUrl) {
-    // PR URL
-    var prNumber = parseInt(parseurl(req.body.repo).pathname.split("/")[4]);
-    try {
-      const response = await octokit.request(
-        "GET /repos/{owner}/{repo}/pulls/{pull_number}",
-        {
-          owner: owner,
-          repo: repository,
-          pull_number: prNumber,
-        }
-      );
-      if (response.data.state === "closed") {
-        app.set("context", "pr-accepted");
-        return res.redirect("/");
-      } else {
-        app.set("context", "pr-open");
-        return res.redirect("/");
-      }
-    } catch (err) {
-      app.set("context", "pr-open");
-      return res.redirect("/");
-    }
-  } else {
-    var isBanned = false;
-    try {
-      const response = await octokit.request(
-        "GET /repos/{owner}/{repo}/issues",
-        {
-          owner: owner,
-          repo: repository,
-          sort: "created",
-          direction: "asc",
-        }
-      );
-      const issues = response.data;
-      issues.forEach((issue) => {
-        if (
-          issue.title == "Pull requests here won’t count toward Hacktoberfest."
-        ) {
-          isBanned = true;
-        }
-      });
-    } catch (err) {
-      app.set("context", "failed");
-      return res.redirect("/");
-    }
+// app.post("/check", async (req, res) => {
+//   var owner = parseurl(req.body.repo).pathname.split("/")[1];
+//   var repository = parseurl(req.body.repo).pathname.split("/")[2];
+//   var isPrUrl = parseurl(req.body.repo).pathname.includes("pull");
+//   if (isPrUrl) {
+//     // PR URL
+//     var prNumber = parseInt(parseurl(req.body.repo).pathname.split("/")[4]);
+//     try {
+//       const response = await octokit.request(
+//         "GET /repos/{owner}/{repo}/pulls/{pull_number}",
+//         {
+//           owner: owner,
+//           repo: repository,
+//           pull_number: prNumber,
+//         }
+//       );
+//       if (response.data.state === "closed") {
+//         app.set("context", "pr-accepted");
+//         return res.redirect("/");
+//       } else {
+//         app.set("context", "pr-open");
+//         return res.redirect("/");
+//       }
+//     } catch (err) {
+//       app.set("context", "pr-open");
+//       return res.redirect("/");
+//     }
+//   } else {
+//     var isBanned = false;
+//     try {
+//       const response = await octokit.request(
+//         "GET /repos/{owner}/{repo}/issues",
+//         {
+//           owner: owner,
+//           repo: repository,
+//           sort: "created",
+//           direction: "asc",
+//         }
+//       );
+//       const issues = response.data;
+//       issues.forEach((issue) => {
+//         if (
+//           issue.title == "Pull requests here won’t count toward Hacktoberfest."
+//         ) {
+//           isBanned = true;
+//         }
+//       });
+//     } catch (err) {
+//       app.set("context", "failed");
+//       return res.redirect("/");
+//     }
 
-    if (isBanned) {
-      app.set("context", "failed");
-      return res.redirect("/");
-    } else {
-      octokit
-        .request("GET /repos/{owner}/{repo}/topics", {
-          owner: owner,
-          repo: repository,
-          mediaType: {
-            previews: ["mercy"],
-          },
-        })
-        .then((x) => {
-          if (x.data.names.includes("hacktoberfest")) {
-            app.set("context", "success");
-            res.redirect("/");
-          } else {
-            app.set("context", "failed");
-            res.redirect("/");
-          }
-        })
-        .catch((err) => {
-          app.set("context", "failed");
-          res.redirect("/");
-        });
-    }
-  }
-});
+//     if (isBanned) {
+//       app.set("context", "failed");
+//       return res.redirect("/");
+//     } else {
+//       octokit
+//         .request("GET /repos/{owner}/{repo}/topics", {
+//           owner: owner,
+//           repo: repository,
+//           mediaType: {
+//             previews: ["mercy"],
+//           },
+//         })
+//         .then((x) => {
+//           if (x.data.names.includes("hacktoberfest")) {
+//             app.set("context", "success");
+//             res.redirect("/");
+//           } else {
+//             app.set("context", "failed");
+//             res.redirect("/");
+//           }
+//         })
+//         .catch((err) => {
+//           app.set("context", "failed");
+//           res.redirect("/");
+//         });
+//     }
+//   }
+// });
 
 app.listen(8000, () => console.log("Listening on port 8000"));
