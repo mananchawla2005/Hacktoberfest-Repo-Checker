@@ -18,6 +18,31 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
           integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
   </script>
+  <script>
+    var next_hf_date = new Date("October 01, 2021 00:00:00"); 
+    var timing = setInterval( 
+      function () {
+
+        var currentDate = new Date().getTime(); 
+        var timeLeft = next_hf_date - currentDate; 
+
+        var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24)); 
+        if (days < 10) days="0"+days; 
+        var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); 
+        if (hours < 10) hours="0"+hours;
+        var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60)); 
+        if (minutes < 10) minutes="0"+minutes;
+        var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+        if (seconds < 10) seconds="0"+seconds;
+
+        document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s"; 
+
+        if (timeLeft <= 0) {
+          clearInterval(timing);
+        }
+      }, 1000);
+
+  </script>
 </head>
 <body>
   <section class="container h-100">
@@ -27,6 +52,10 @@
         </strong>
         <h4 class="alert-description mt-4">Well... It seems not October now :(</h4>
         <h4 class="alert-description mt-1">Please wait until next <a href="https://hacktoberfest.digitalocean.com">Hacktoberfest</a> starts!</h4>
+        <br>
+        <br>
+        <div class="alert-title text-danger" id="countdown">
+        </div>
       </div>
   </section>
 </body>
