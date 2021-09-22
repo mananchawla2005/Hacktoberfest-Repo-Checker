@@ -16,7 +16,6 @@ app.use(express.json());
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 
-
 // Methods
 function getRepositoryDetailsObject(URL) {
   const owner = parseurl(URL).pathname.split("/")[1];
@@ -32,7 +31,7 @@ function getRepositoryDetailsObject(URL) {
 }
 function checkEligibilityForHacktoberfest(response) {
   // Getting All Labels from Response
-  console.log(response)
+  console.log(response);
   const labels = response.data.labels;
   let isHacktoberFestPr = false;
   // Searching for hacktoberfest labels
@@ -48,7 +47,7 @@ function checkEligibilityForHacktoberfest(response) {
     status: response.status,
     isOpen: !(response.data.state === "closed"),
     isEligible: isHacktoberFestPr,
-    valid: (response.status == 200),
+    valid: response.status == 200,
   });
 }
 async function getPRDetails(owner, repository, prNumber) {
@@ -109,10 +108,10 @@ async function getIssues(owner, repository) {
   });
   // console.log("get Issues Response",response)
   const issues = response.data;
-  const status = response.status
+  const status = response.status;
   return {
-    issues : issues,
-    status : status
+    issues: issues,
+    status: status,
   };
 }
 async function getTopics(owner, repository) {
@@ -133,7 +132,7 @@ async function handleNonPRURL({ owner, repository, isPrUrl, URL }) {
       .then((response) => {
         let isBanned = false;
         const issues = response.issues;
-        const status = response.status
+        const status = response.status;
         issues.forEach((issue) => {
           const banString =
             "Pull requests here won’t count toward Hacktoberfest.";
@@ -143,13 +142,13 @@ async function handleNonPRURL({ owner, repository, isPrUrl, URL }) {
           }
         });
         return {
-          isBanned : isBanned,
-          status : status
+          isBanned: isBanned,
+          status: status,
         };
       })
       .then(async (response) => {
-        const isBanned = response.isBanned
-        const status = response.status
+        const isBanned = response.isBanned;
+        const status = response.status;
         console.log("is Banned", isBanned);
         if (isBanned) {
           // return false
