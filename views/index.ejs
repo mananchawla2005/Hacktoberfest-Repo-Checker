@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hacktoberfest Repository Checker</title>
     <link
       rel="stylesheet"
@@ -17,6 +15,17 @@
     <link href="/css/dark-mode.css" rel="stylesheet" type="text/css" />
     <link href="/css/styles.css" rel="stylesheet" type="text/css" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="theme-color" content="#f74700" />
+    <meta name="title" content="Hacktoberfest Repository Checker">
+    <meta name="description" content="This website can be used to check if your repository is eligible for Hacktoberfest 2021">
+    <meta name="keywords" content="Hacktoberfest, Hacktoberfest 2021, Digital Ocean">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+    <meta name="author" content="Manav Chawla and Neeraj Gupta">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
   </head>
 
   <body
@@ -46,7 +55,7 @@
           <div class="modal-footer border-0">
             <div class="theme-dark-green p-4 w-100" style="border-radius: 10px;">
               <div class="bg-white d-flex align-items-center justify-content-center rounded-pill">
-                <p class="px-4 py-2 px-lg-2 m-0 p-0" style="font-size: 0.9rem;">This repository is <span class="fw-bold theme-light-orange-link">eligible</span> for Hactoberfest 2021</p>
+                <p class="px-4 py-2 px-lg-4 m-0 p-0" style="font-size: 0.9rem" id="modal-result">This repository is <span class="fw-bold theme-light-orange-link">eligible</span> for Hactoberfest 2021</p>
               </div>
             </div>
           </div>
@@ -141,7 +150,7 @@
           />
         </div>
       </div>
-      <form method="POST" action="/check">
+      <form id="repo-checker-form">
         <div
           class="
             repo-input
@@ -180,8 +189,6 @@
               flex-shrink-0 flex-grow-0
             "
             value="check"
-            data-bs-toggle="modal" 
-            data-bs-target="#custom-modal"
           />
         </div>
       </form>
@@ -206,5 +213,6 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"
   ></script>
+  <script src="/js/api.js"></script>
   <script src="/js/main.js" type="text/javascript" defer></script>
 </html>
