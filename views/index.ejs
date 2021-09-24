@@ -14,18 +14,28 @@
     />
     <link href="/css/dark-mode.css" rel="stylesheet" type="text/css" />
     <link href="/css/styles.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/css/loaders-animation.css" type="text/css">
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <meta name="theme-color" content="#f74700" />
-    <meta name="title" content="Hacktoberfest Repository Checker">
-    <meta name="description" content="This website can be used to check if your repository is eligible for Hacktoberfest 2021">
-    <meta name="keywords" content="Hacktoberfest, Hacktoberfest 2021, Digital Ocean">
-    <meta name="robots" content="index, follow">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="language" content="English">
-    <meta name="author" content="Manav Chawla and Neeraj Gupta">
+    <meta name="title" content="Hacktoberfest Repository Checker" />
+    <meta
+      name="description"
+      content="This website can be used to check if your repository is eligible for Hacktoberfest 2021"
+    />
+    <meta
+      name="keywords"
+      content="Hacktoberfest, Hacktoberfest 2021, Digital Ocean"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="language" content="English" />
+    <meta name="author" content="Manav Chawla and Neeraj Gupta" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
   </head>
 
   <body
@@ -37,10 +47,31 @@
       justify-content-center
     "
   >
+    <!-- Preloader -->
+    <div
+      class="
+        preloader
+        position-fixed
+        top-0
+        end-0
+        start-0
+        bottom-0
+        bg-light
+        d-flex
+        align-items-center
+        justify-content-center
+        d-block
+      "
+    >
+      <img src="/svg/logo.svg" class="preloader-logo" alt="preloader" />
+    </div>
     <!-- Modal -->
     <div class="modal" tabindex="-1" id="custom-modal">
       <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content p-4 shadow-lg border-0 bg-light" style="border-radius: 10px;">
+        <div
+          class="modal-content p-4 shadow-lg border-0 bg-light"
+          style="border-radius: 10px"
+        >
           <div class="modal-header border-0">
             <button
               type="button"
@@ -49,13 +80,31 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body d-flex align-items-center justify-content-center">
-            <img src="svg/modalLogo.svg" alt="modal Logo" width="350">
+          <div
+            class="modal-body d-flex align-items-center justify-content-center"
+          >
+            <img src="svg/modalLogo.svg" alt="modal Logo" width="350" />
           </div>
           <div class="modal-footer border-0">
-            <div class="theme-dark-green p-4 w-100" style="border-radius: 10px;">
-              <div class="bg-white d-flex align-items-center justify-content-center rounded-pill">
-                <p class="px-4 py-2 px-lg-4 m-0 p-0" style="font-size: 0.9rem" id="modal-result">This repository is <span class="fw-bold theme-light-orange-link">eligible</span> for Hactoberfest 2021</p>
+            <div class="theme-dark-green p-4 w-100" style="border-radius: 10px">
+              <div
+                class="
+                  bg-white
+                  d-flex
+                  align-items-center
+                  justify-content-center
+                  rounded-pill
+                "
+              >
+                <p
+                  class="px-4 py-2 px-lg-4 m-0 p-0"
+                  style="font-size: 0.9rem"
+                  id="modal-result"
+                >
+                  This repository is
+                  <span class="fw-bold theme-light-orange-link">eligible</span>
+                  for Hactoberfest 2021
+                </p>
               </div>
             </div>
           </div>
@@ -161,6 +210,7 @@
             align-items-center
             justify-content-between
             px-4
+            position-relative
           "
         >
           <input
@@ -179,7 +229,7 @@
             autocomplete="off"
             required
           />
-          <input
+          <!-- <input
             type="submit"
             class="
               custom-search-button
@@ -189,7 +239,36 @@
               flex-shrink-0 flex-grow-0
             "
             value="check"
-          />
+          /> -->
+          <button
+            type="submit"
+            class="
+              custom-search-button
+              rounded-pill
+              text-capitalize
+              theme-light-orange
+              flex-shrink-0 flex-grow-0
+            "
+          >
+            <div class="check-button-label d-block">Check</div>
+            <div class="dots-container d-none">
+              <i class="bi bi-circle-fill dot-1"></i>
+              <i class="bi bi-circle-fill dot-2"></i>
+              <i class="bi bi-circle-fill dot-3"></i>
+            </div>
+          </button>
+          <!-- Last Searched Entries -->
+          <div
+            class="w-100 position-absolute start-0 last-searched"
+            style="top: 120%"
+          >
+            <ul class="list-group list-group-flush">
+              <!-- <li class="list-group-item d-flex align-content-center justify-content-between rounded-pill border-0">
+                <span>Entry 1</span>
+                <span class="bi bi-x"></span>
+              </li> -->
+            </ul>
+          </div>
         </div>
       </form>
 
@@ -214,5 +293,7 @@
     crossorigin="anonymous"
   ></script>
   <script src="/js/api.js"></script>
+  <script src="/js/list-items.js" defer></script>
+  <script src="/js/input.js" defer></script>
   <script src="/js/main.js" type="text/javascript" defer></script>
 </html>

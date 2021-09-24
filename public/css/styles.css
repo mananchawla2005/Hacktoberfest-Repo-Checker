@@ -21,6 +21,9 @@ body {
   height: 69px;
   outline: none !important;
 }
+.last-searched {
+  display: none;
+}
 .custom-search-button {
   width: 100px;
   height: 42px;
