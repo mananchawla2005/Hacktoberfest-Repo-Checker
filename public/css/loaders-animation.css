@@ -1,46 +1,45 @@
 .preloader {
-    z-index: 1031 !important;
+  z-index: 1031 !important;
+}
+.preloader-logo {
+  animation-name: bounce;
+  animation-duration: 0.8s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  height: 100px;
+  width: 100px;
+  transform-origin: bottom;
+}
+@keyframes bounce {
+  0% {
+    transform: translateY(0px) scaleY(0.8);
   }
-  .preloader-logo {
-    animation-name: bounce;
-    animation-duration: 0.8s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-    height: 100px;
-    width: 100px;
-    transform-origin: bottom;
+  50% {
+    transform: translateY(-30px) scaleY(1);
   }
-  @keyframes bounce {
-    0% {
-      transform: translateY(0px) scaleY(0.8);
-    }
-    50% {
-      transform: translateY(-30px) scaleY(1);
-    }
-    100% {
-      transform: translateY(0px) scaleY(0.8);
-    }
+  100% {
+    transform: translateY(0px) scaleY(0.8);
   }
+}
 
-  /* Dots Animation */
-  @keyframes scaleInOut {
-    0% {
-      transform: scale(1,1);
-    }
-    50% {
-      transform: scale(0.8,0.8);
-    }
-    100% {
-      transform: scale(1,1);
-    }
+/* Dots Animation */
+@keyframes scaleInOut {
+  0% {
+    transform: scale(1, 1);
   }
-  .dot-1::before {
-    animation: scaleInOut 0.8s ease-in-out 0.1s infinite;
+  50% {
+    transform: scale(0.8, 0.8);
   }
-  .dot-2::before {
-    animation: scaleInOut 0.8s ease-in-out 0.3s infinite;
+  100% {
+    transform: scale(1, 1);
   }
-  .dot-3::before {
-    animation: scaleInOut 0.8s ease-in-out 0.7s infinite;
-  }
-  
+}
+.dot-1::before {
+  animation: scaleInOut 0.8s ease-in-out 0.1s infinite;
+}
+.dot-2::before {
+  animation: scaleInOut 0.8s ease-in-out 0.3s infinite;
+}
+.dot-3::before {
+  animation: scaleInOut 0.8s ease-in-out 0.7s infinite;
+}

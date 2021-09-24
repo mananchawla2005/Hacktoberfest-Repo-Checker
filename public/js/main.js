@@ -51,9 +51,8 @@ function toggleClasses() {
   saveToLocalStorage(currentTheme);
 }
 
-
 // Preloader
 setTimeout(() => {
-  document.querySelector(".preloader").classList.toggle("d-block")
-  document.querySelector(".preloader").classList.toggle("d-none")
-},1500)
+  document.querySelector(".preloader").classList.toggle("d-block");
+  document.querySelector(".preloader").classList.toggle("d-none");
+}, 1500);
