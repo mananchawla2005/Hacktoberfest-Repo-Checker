@@ -38,8 +38,8 @@ body {
   position: relative;
 }
 .list-group-item > p {
- overflow: auto;
- white-space: nowrap;
+  overflow: auto;
+  white-space: nowrap;
 }
 .remove-button {
   flex: none;
