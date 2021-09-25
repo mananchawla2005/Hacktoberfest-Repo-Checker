@@ -37,6 +37,16 @@ body {
   transition: 0.1s ease-out;
   position: relative;
 }
+.list-group-item > p {
+ overflow: auto;
+ white-space: nowrap;
+}
+.remove-button {
+  flex: none;
+}
+.list-group-item > p::-webkit-scrollbar {
+  display: none;
+}
 .custom-link::after {
   content: "";
   position: absolute;

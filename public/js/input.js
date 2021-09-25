@@ -17,14 +17,15 @@ customInput.addEventListener("focusin", () => {
 //     lastSearched.style.display = "block";
 // })
 const buildURLList = () => {
-  listGroup.innerHTML = "";
-  const arr = JSON.parse(localStorage.getItem("last-searched"));
-  // console.log(typeof arr, arr)
-  arr.forEach((item) => {
-    listGroup.innerHTML += `
-            <li class="list-group-item d-flex align-content-center justify-content-between rounded-pill mb-1 border-0">
-                <span>${item}</span>
-                <span class="bi bi-x remove-button" onclick="removeListItem(event)"></span>
+    listGroup.innerHTML = ""
+    const arr = JSON.parse(localStorage.getItem("last-searched"))
+    // console.log(typeof arr, arr)
+    arr.forEach(item => {
+        listGroup.innerHTML += 
+        `
+            <li class="list-group-item d-flex align-items-center justify-content-between rounded-pill mb-1 border-0">
+                <p class="p-0 m-0">${item}</p>
+                <p class="bi bi-x remove-button m-0 px-3" onclick="removeListItem(event)"></p>
             </li>
         `;
   });
