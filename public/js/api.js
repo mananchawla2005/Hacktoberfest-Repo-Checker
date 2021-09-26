@@ -52,4 +52,4 @@ const modalDetails = (data) => {
     data.isEligible ? "eligible" : "not eligible"
   }</span> for Hactoberfest 2021`;
 };
-document.querySelector(".btn-close").addEventListener("click", toggleModal);
+document.querySelector(".button-close").addEventListener("click", toggleModal);

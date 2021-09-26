@@ -21,7 +21,7 @@ function toggleClasses() {
   const navLinks = document.querySelectorAll(".custom-link");
   const navbar = document.querySelector(".custom-nav");
   const modalContent = document.querySelector(".modal-content");
-  const modalCloseButton = document.querySelector(".btn-close");
+  const modalCloseButton = document.querySelector(".button-close");
   modalContent.classList.toggle("bg-light");
   modalContent.classList.toggle("bg-dark");
   modalCloseButton.classList.toggle("theme-light-orange");

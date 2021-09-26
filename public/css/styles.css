@@ -42,7 +42,9 @@ body {
   white-space: nowrap;
 }
 .remove-button {
-  flex: none;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
 }
 .list-group-item > p::-webkit-scrollbar {
   display: none;
