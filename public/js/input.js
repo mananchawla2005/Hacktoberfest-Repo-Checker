@@ -7,9 +7,9 @@ customInput.addEventListener("focusin", () => {
 });
 customInput.addEventListener("focusout", () => {
   setTimeout(() => {
-    lastSearched.style.display = "none"
-  }, 100)
-})
+    lastSearched.style.display = "none";
+  }, 100);
+});
 const buildURLList = () => {
   listGroup.innerHTML = "";
   const arr = JSON.parse(localStorage.getItem("last-searched"));
