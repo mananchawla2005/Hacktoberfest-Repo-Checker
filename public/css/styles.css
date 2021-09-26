@@ -6,6 +6,10 @@ body {
   overflow: hidden;
   height: 100vh;
 }
+/* Modal */
+.custom-modal {
+  background-color: rgba(0, 0, 0, 0.3);
+}
 .hacktoberfest-logo {
   -webkit-user-select: none;
   -moz-user-select: none;

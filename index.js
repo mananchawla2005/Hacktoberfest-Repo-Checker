@@ -31,7 +31,7 @@ function getRepositoryDetailsObject(URL) {
 }
 function checkEligibilityForHacktoberfest(response) {
   // Getting All Labels from Response
-  console.log(response);
+  // console.log(response);
   const labels = response.data.labels;
   let isHacktoberFestPr = false;
   // Searching for hacktoberfest labels
@@ -127,7 +127,7 @@ async function getTopics(owner, repository) {
 async function handleNonPRURL({ owner, repository, isPrUrl, URL }) {
   let resultObj = new Object();
   try {
-    console.log("in try block");
+    // console.log("in try block");
     await getIssues(owner, repository)
       .then((response) => {
         let isBanned = false;

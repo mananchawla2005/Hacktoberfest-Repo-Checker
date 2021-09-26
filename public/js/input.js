@@ -5,9 +5,11 @@ const listGroup = document.querySelector(".list-group");
 customInput.addEventListener("focusin", () => {
   lastSearched.style.display = "block";
 });
-// customInput.addEventListener("focusout", () => {
-//     lastSearched.style.display = "none"
-// })
+customInput.addEventListener("focusout", () => {
+  setTimeout(() => {
+    lastSearched.style.display = "none"
+  }, 100)
+})
 const buildURLList = () => {
   listGroup.innerHTML = "";
   const arr = JSON.parse(localStorage.getItem("last-searched"));

@@ -46,10 +46,34 @@ const toggleModal = () => {
   modal.classList.toggle("d-block");
 };
 
+const openOrNot = (data) => {
+  if(data.isOpen != undefined) {
+    if(data.isOpen) {
+      return " and is opened";
+    } else {
+      return " and is closed";
+    }
+  } else {
+    return "";
+  }
+}
+const eligibleOrNot = (data) => {
+  if(data.isEligible != undefined) {
+    if(data.isEligible) {
+      return "eligible";
+    } else {
+      return "not eligible";
+    }
+  } else {
+    return "";
+  }
+}
 const modalDetails = (data) => {
   const result = document.getElementById("modal-result");
-  result.innerHTML = `This repository is <span class="fw-bold theme-light-orange-link">${
-    data.isEligible ? "eligible" : "not eligible"
-  }</span> for Hactoberfest 2021`;
+  if(data.status == 200 && data.valid) {
+    result.innerHTML = `This repository is <span class="fw-bold theme-light-orange-link">${eligibleOrNot(data)} ${openOrNot(data)}</span> for Hactoberfest 2021`;
+  } else if(data.status == 15) {
+    result.innerHTML = `This repository is <span class="fw-bold theme-light-orange-link">banned</span> for Hactoberfest 2021`;
+  }
 };
 document.querySelector(".button-close").addEventListener("click", toggleModal);
