@@ -1,16 +1,26 @@
-# **Hacktoberfest Repository Checker**
+<h1 align="center" style="font-weight: bold;">Hacktoberfest Repository Checker</h1>
+<p align="center">Checks if the given repository is participating to hacktoberfest</p>
 
-Checks If The Given Repository is Participating to **Hacktoberfest 2021**
+---
+<p align="center">
+<strong><a href="#Installation">Install</a></strong>
+|
+<strong><a href="https://hfchecker.com">🔗Demo</a></strong>
+|
+<strong><a href="#API">API</a></strong>
+|
+<strong><a href="#Contributing">Contributing</a></strong>
+</p>
 
 ---
 
-**[Install](#Installation)** | **[🔗Demo](https://hacktoberfest.cf/)** | **[API](#API)** | **[Contributing](#Contributing)**
+<p align="center"><img src="./img/light.png"></img></p>
 
----
+<details>
+  <summary>Dark Mode</summary>
+  <p align="center"><img src="./img/dark.png"></img></p>
+</details>
 
-![](./img/light.png)
-
-![](./img/dark.png)
 
 ## **Installation**
 
@@ -18,12 +28,16 @@ Checks If The Given Repository is Participating to **Hacktoberfest 2021**
 
 ## **🔌API**
 
-- The project also has a public api currently in testing. You can access it at `hacktoberfest.cf/api?url=<url of="" repo="">`
+- The project also has a public api currently in testing. You can access it at `hfchecker.com/api?url=<url of="" repo="">`
 
 ## **💕Contributing**
 
 - The project is open for contributions. You can make a issue or assign yourselves one and then can start working upon it. The project uses node.js for serving the files in combination with ejs as the templating engine. While making a pull request, make sure to pr to the dev branch rather than the master branch.
 
-# **Happy Open Sourcing!**
 
-</url></yourgithubusername>
+**The website is hosted by resources from fosshost. Fosshost is a non profit organisation who provides compute resources/dns/domains to open source projects. Be sure to check them out**
+
+<img src="https://fosshost.org/img/fosshost-logo.png" />
+
+# **Happy Hacking!**
+
