@@ -3,8 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="title" content="Hacktoberfest Repository Checker">
+    <meta name="description" content="A website to check if a repository or a pull request is eligible for hacktoberfest or not">
+    <meta name="keywords" content="hacktoberfest, hf, hfchecker, repositorychecker, checker, opensource">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hfchecker.com">
+    <meta property="og:title" content="Hacktoberfest Repository Checker">
+    <meta property="og:description" content="A website to check if a repository or a pull request is eligible for hacktoberfest or not">
+    <meta property="og:image" content="https://user-images.githubusercontent.com/55191873/133085921-ddfbdb3c-97ef-4681-b9c7-0f65a97b5151.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="hfchecker.com">
+    <meta property="twitter:title" content="Hacktoberfest Repository Checker">
+    <meta property="twitter:description" content="A website to check if a repository or a pull request is eligible for hacktoberfest or not">
+    <meta property="twitter:image" content="https://user-images.githubusercontent.com/55191873/133085921-ddfbdb3c-97ef-4681-b9c7-0f65a97b5151.png">
     <title>Hacktoberfest Repository Checker</title>
     <link rel="stylesheet" href="/css/not-october.css">
+    <script>
+      var next_hf_date = new Date("October 01, 2021 00:00:00"); 
+      var timing = setInterval( 
+        function () {
+  
+          var currentDate = new Date().getTime(); 
+          var timeLeft = next_hf_date - currentDate; 
+  
+          var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24)); 
+          if (days < 10) days="0"+days; 
+          var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); 
+          if (hours < 10) hours="0"+hours;
+          var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60)); 
+          if (minutes < 10) minutes="0"+minutes;
+          var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+          if (seconds < 10) seconds="0"+seconds;
+  
+          document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s"; 
+  
+          if (timeLeft <= 0) {
+            clearInterval(timing);
+          }
+        }, 1000);
+  
+    </script>
   </head>
   <body>
     <section class="main-container">
@@ -12,6 +57,11 @@
         <img src="/svg/modalLogo.svg" alt="Hf2021" class="hf-img" />
         <p>It was a great experience this year</p>
         <p>Will See you next year, till then keep <span class="hero-text">open sourcing</span></p>
+        <br>
+        <br>
+        <div class="alert-title text-danger">
+          <h2 id="countdown" class="mt-4"></h2>
+        </div>
       </div>
     </section>
   </body>

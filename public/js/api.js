@@ -13,7 +13,6 @@ form.addEventListener("submit", (event) => {
   // Save Searched URL to LocalStorage
   saveURLToLocalStorage(URL);
   buildURLList();
-  // console.log(URL);
   fetchDataFromApi(URL);
   customInput.value = "";
 });

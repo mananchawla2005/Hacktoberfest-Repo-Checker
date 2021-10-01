@@ -13,7 +13,6 @@ customInput.addEventListener("focusout", () => {
 const buildURLList = () => {
   listGroup.innerHTML = "";
   const arr = JSON.parse(localStorage.getItem("last-searched"));
-  // console.log(typeof arr, arr)
   arr.forEach((item) => {
     listGroup.innerHTML += `
             <li class="list-group-item d-flex align-items-center justify-content-between rounded-pill mb-1 border-0" onclick="addToInput(event)">

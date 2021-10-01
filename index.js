@@ -7,11 +7,9 @@ const parseurl = require("parse-url");
 const octokit = new Octokit({ auth: process.env.TOKEN });
 const octoberChecker = require("./utils/octoberChecker");
 app.use(
-  session({ secret: "mySecret", resave: false, saveUninitialized: false })
+  session({ secret: process.env.SECRET, resave: false, saveUninitialized: false })
 );
-// parse application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: false }));
-// parse application/json
 app.use(express.json());
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
@@ -31,7 +29,6 @@ function getRepositoryDetailsObject(URL) {
 }
 function checkEligibilityForHacktoberfest(response) {
   // Getting All Labels from Response
-  // console.log(response);
   const labels = response.data.labels;
   let isHacktoberFestPr = false;
   // Searching for hacktoberfest labels
@@ -73,11 +70,10 @@ async function handlePRURL({ owner, repository, isPrUrl, URL }) {
         const hacktoberfestEligibilityData = JSON.parse(
           checkEligibilityForHacktoberfest(response)
         );
-        // console.log("printing hacktoberfestEligibilityData",hacktoberfestEligibilityData);
         resultObj = hacktoberfestEligibilityData;
       })
       .catch((err) => {
-        console.log(err);
+        //console.log(err);
         const obj = {
           status: 404,
           isOpen: undefined,
@@ -87,7 +83,7 @@ async function handlePRURL({ owner, repository, isPrUrl, URL }) {
         resultObj = obj;
       });
   } catch (err) {
-    console.log(err);
+    //console.log(err);
     const obj = {
       status: 404,
       isOpen: undefined,
@@ -96,7 +92,6 @@ async function handlePRURL({ owner, repository, isPrUrl, URL }) {
     };
     resultObj = obj;
   }
-  // console.log("pritig from handlePRUEL",resultObj)
   return resultObj;
 }
 async function getIssues(owner, repository) {
@@ -106,7 +101,6 @@ async function getIssues(owner, repository) {
     sort: "created",
     direction: "asc",
   });
-  // console.log("get Issues Response",response)
   const issues = response.data;
   const status = response.status;
   return {
@@ -120,14 +114,12 @@ async function getTopics(owner, repository) {
     repo: repository,
     mediaType: { previews: ["mercy"] },
   });
-  // console.log(response);
   const topics = response.data;
   return topics;
 }
 async function handleNonPRURL({ owner, repository, isPrUrl, URL }) {
   let resultObj = new Object();
   try {
-    // console.log("in try block");
     await getIssues(owner, repository)
       .then((response) => {
         let isBanned = false;
@@ -149,9 +141,7 @@ async function handleNonPRURL({ owner, repository, isPrUrl, URL }) {
       .then(async (response) => {
         const isBanned = response.isBanned;
         const status = response.status;
-        console.log("is Banned", isBanned);
         if (isBanned) {
-          // return false
           resultObj = {
             status: 15, //Blocked Error Code
             isOpen: undefined,
@@ -161,7 +151,6 @@ async function handleNonPRURL({ owner, repository, isPrUrl, URL }) {
         } else {
           await getTopics(owner, repository)
             .then((topics) => {
-              // console.log(topics);
               resultObj = {
                 status: 200,
                 isOpen: undefined,
@@ -170,7 +159,7 @@ async function handleNonPRURL({ owner, repository, isPrUrl, URL }) {
               };
             })
             .catch((err) => {
-              console.log(err);
+              //console.log(err);
               resultObj = {
                 status: 404,
                 isOpen: undefined,
@@ -181,7 +170,7 @@ async function handleNonPRURL({ owner, repository, isPrUrl, URL }) {
         }
       })
       .catch((err) => {
-        console.log(err);
+        //console.log(err);
         resultObj = {
           status: 404,
           isOpen: undefined,
@@ -190,7 +179,7 @@ async function handleNonPRURL({ owner, repository, isPrUrl, URL }) {
         };
       });
   } catch (err) {
-    console.log(err);
+    //console.log(err);
     resultObj = {
       status: 404,
       isOpen: undefined,
@@ -198,17 +187,17 @@ async function handleNonPRURL({ owner, repository, isPrUrl, URL }) {
       valid: undefined,
     };
   }
-  console.log("resultObj", resultObj);
   return resultObj;
 }
 
-// Enpoints
+// Endpoints
 app.get("/", (req, res) => {
-  // if(octoberChecker.isNotOctober()) {
-  //   res.render("not-october")
-  //   return
-  // }
-  res.render("index");
+  if(octoberChecker.isNotOctober()) {
+    res.render("not-october")
+  }
+  else{
+    res.render("index");
+  }
 });
 
 app.get("/api", async (req, res) => {
@@ -228,7 +217,6 @@ app.get("/api", async (req, res) => {
       res.json(response);
     });
   }
-  // res.json(["Tony","Lisa","Michael","Ginger","Food", req.query.url]);
 });
 
 app.listen(8000, () => console.log("Listening on port 8000"));

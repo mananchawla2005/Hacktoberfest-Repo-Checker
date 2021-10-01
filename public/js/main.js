@@ -2,7 +2,6 @@ const themeTogglerButton = document.querySelector(".theme-toggler-button");
 const themeTogglerIcon = document.querySelector(".theme-toggler-icon");
 const theme = localStorage.getItem("theme");
 if (theme) {
-  // console.log("current theme is",theme)
   if (theme === "dark") {
     toggleClasses();
   }
@@ -47,7 +46,6 @@ function toggleClasses() {
     heroLogo.src = "logoLight.svg";
   }
   currentTheme = heroLogo.dataset.theme;
-  // console.log(currentTheme)
   saveToLocalStorage(currentTheme);
 }
 
