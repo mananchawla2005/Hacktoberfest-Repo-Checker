@@ -6,6 +6,10 @@ body {
   overflow: hidden;
   height: 100vh;
 }
+/* Modal */
+.custom-modal {
+  background-color: rgba(0, 0, 0, 0.3);
+}
 .hacktoberfest-logo {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -21,6 +25,9 @@ body {
   height: 69px;
   outline: none !important;
 }
+.last-searched {
+  display: none;
+}
 .custom-search-button {
   width: 100px;
   height: 42px;
@@ -33,6 +40,18 @@ body {
   -o-transition: 0.1s ease-out;
   transition: 0.1s ease-out;
   position: relative;
+}
+.list-group-item > p {
+  overflow: auto;
+  white-space: nowrap;
+}
+.remove-button {
+  -webkit-box-flex: 0;
+  -ms-flex: none;
+  flex: none;
+}
+.list-group-item > p::-webkit-scrollbar {
+  display: none;
 }
 .custom-link::after {
   content: "";

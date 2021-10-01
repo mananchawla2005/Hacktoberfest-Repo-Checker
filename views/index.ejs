@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hacktoberfest Repository Checker</title>
     <link
       rel="stylesheet"
@@ -16,120 +14,55 @@
     />
     <link href="/css/dark-mode.css" rel="stylesheet" type="text/css" />
     <link href="/css/styles.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/css/loaders-animation.css" type="text/css" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="theme-color" content="#f74700" />
+    <meta name="title" content="Hacktoberfest Repository Checker" />
+    <meta
+      name="description"
+      content="This website can be used to check if your repository is eligible for Hacktoberfest 2021"
+    />
+    <meta
+      name="keywords"
+      content="Hacktoberfest, Hacktoberfest 2021, Digital Ocean"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="language" content="English" />
+    <meta name="author" content="Manav Chawla and Neeraj Gupta" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
   </head>
 
-  <body
-    class="
-      bg-light
-      d-flex
-      flex-column
-      align-content-center
-      justify-content-center
-    "
-  >
-    <!-- Modal -->
-    <div class="modal" tabindex="-1" id="custom-modal">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content p-4 shadow-lg border-0 bg-light" style="border-radius: 10px;">
-          <div class="modal-header border-0">
-            <button
-              type="button"
-              class="btn-close p-2 rounded-circle theme-light-orange"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body d-flex align-items-center justify-content-center">
-            <img src="svg/modalLogo.svg" alt="modal Logo" width="350">
-          </div>
-          <div class="modal-footer border-0">
-            <div class="theme-dark-green p-4 w-100" style="border-radius: 10px;">
-              <div class="bg-white d-flex align-items-center justify-content-center rounded-pill">
-                <p class="px-4 py-2 px-lg-2 m-0 p-0" style="font-size: 0.9rem;">This repository is <span class="fw-bold theme-light-orange-link">eligible</span> for Hactoberfest 2021</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Navbar -->
-    <nav
-      class="navbar fixed-top navbar-expand-lg px-3 px-lg-5 custom-nav bg-light"
+  <body class="bg-light">
+    <!-- Preloader -->
+    <div
+      class="
+        preloader
+        position-fixed
+        top-0
+        end-0
+        start-0
+        bottom-0
+        bg-light
+        d-flex
+        align-items-center
+        justify-content-center
+        d-block
+      "
     >
-      <div class="container-fluid">
-        <a class="navbar-brand" href="https://hacktoberfest.digitalocean.com">
-          <img
-            src="svg/logo.svg"
-            alt="HacktoberFest-2021"
-            draggable="false"
-            width="150"
-          />
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <!-- <span class="navbar-toggler-icon"></span> -->
-          <i class="bi bi-list fs-1"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a
-                class="
-                  nav-link
-                  custom-link
-                  text-capitalize
-                  theme-light-orange-link
-                  mx-3
-                  fs-5
-                "
-                href="https://hacktoberfest.digitalocean.com/profile"
-                >start Hacking</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="
-                  nav-link
-                  custom-link
-                  text-capitalize
-                  theme-light-orange-link
-                  mx-3
-                  fs-5
-                "
-                href="https://www.firsttimersonly.com/"
-                >first timers</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="
-                  nav-link
-                  custom-link
-                  text-capitalize
-                  theme-light-orange-link
-                  mx-3
-                  fs-5
-                "
-                href="https://hacktoberfest.digitalocean.com"
-                >about</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+      <img src="/svg/logo.svg" class="preloader-logo" alt="preloader" />
+    </div>
+    <%- include('modal.ejs') -%>
+
+    <%- include('navbar.ejs') -%>
 
     <!-- Banner -->
-    <section id="banner">
+    <section id="banner" class="h-100 mt-5 pt-5">
       <div class="container pb-5">
         <div class="text-center">
           <img
@@ -141,7 +74,7 @@
           />
         </div>
       </div>
-      <form method="POST" action="/check">
+      <form id="repo-checker-form">
         <div
           class="
             repo-input
@@ -152,6 +85,7 @@
             align-items-center
             justify-content-between
             px-4
+            position-relative
           "
         >
           <input
@@ -167,9 +101,10 @@
             placeholder="Enter Repository Link"
             aria-label="Repository Url"
             aria-describedby="basic-addon2"
+            autocomplete="off"
             required
           />
-          <input
+          <!-- <input
             type="submit"
             class="
               custom-search-button
@@ -179,9 +114,36 @@
               flex-shrink-0 flex-grow-0
             "
             value="check"
-            data-bs-toggle="modal" 
-            data-bs-target="#custom-modal"
-          />
+          /> -->
+          <button
+            type="submit"
+            class="
+              custom-search-button
+              rounded-pill
+              text-capitalize
+              theme-light-orange
+              flex-shrink-0 flex-grow-0
+            "
+          >
+            <div class="check-button-label d-block">Check</div>
+            <div class="dots-container d-none">
+              <i class="bi bi-circle-fill dot-1"></i>
+              <i class="bi bi-circle-fill dot-2"></i>
+              <i class="bi bi-circle-fill dot-3"></i>
+            </div>
+          </button>
+          <!-- Last Searched Entries -->
+          <div
+            class="w-100 position-absolute start-0 last-searched"
+            style="top: 120%"
+          >
+            <ul class="list-group list-group-flush">
+              <!-- <li class="list-group-item d-flex align-content-center justify-content-between rounded-pill border-0">
+                <span>Entry 1</span>
+                <span class="bi bi-x"></span>
+              </li> -->
+            </ul>
+          </div>
         </div>
       </form>
 
@@ -194,7 +156,7 @@
       <div class="position-fixed bottom-0 end-0 start-0">
         <p class="text-center theme-copyright copyright">
           This Website is made under Hacktoberfest 2021. Logo Copyright is
-          reserved by Digital Ocean.
+          reserved by <strong>Digital Ocean</strong>.
         </p>
       </div>
     </section>
@@ -205,5 +167,8 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"
   ></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/list-items.js" defer></script>
+  <script src="/js/input.js" defer></script>
   <script src="/js/main.js" type="text/javascript" defer></script>
 </html>
