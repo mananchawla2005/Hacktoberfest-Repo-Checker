@@ -1,62 +1,90 @@
-
-
-.nav-link{
-    font-size: 1.3rem;
-    margin: 3px;
-    color: rgb(85, 83, 83)!important;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&display=swap");
+* {
+  font-family: "Poppins", sans-serif;
 }
-.navbar{
-    background-color: #fff;
+body {
+  overflow: hidden;
+  height: 100vh;
 }
-.fa-bars{
-    color: rgb(85, 83, 83);
-    font-size: 30px !important;
+/* Modal */
+.custom-modal {
+  background-color: rgba(0, 0, 0, 0.3);
 }
-.navbar-toggler{
-    outline: none !important;
+.hacktoberfest-logo {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
-.navbar-brand{
-    font-weight: 500 !important;
+.repo-input {
+  width: 90%;
+  margin: auto;
 }
-.navbar-brand span:hover{
-    color: white !important;
+.custom-search-input {
+  border: none;
+  height: 69px;
+  outline: none !important;
 }
-#banner{
-     padding: 178px 26px;
+.last-searched {
+  display: none;
+}
+.custom-search-button {
+  width: 100px;
+  height: 42px;
+  border: none;
+  outline: none;
+  color: white;
+}
+.custom-link {
+  -webkit-transition: 0.1s ease-out;
+  -o-transition: 0.1s ease-out;
+  transition: 0.1s ease-out;
+  position: relative;
+}
+.list-group-item > p {
+  overflow: auto;
+  white-space: nowrap;
+}
+.remove-button {
+  -webkit-box-flex: 0;
+  -ms-flex: none;
+  flex: none;
+}
+.list-group-item > p::-webkit-scrollbar {
+  display: none;
+}
+.custom-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 0%;
+  border: 2px solid transparent;
+  -webkit-transition: 0.2s ease-out;
+  -o-transition: 0.2s ease-out;
+  transition: 0.2s ease-out;
+}
+.custom-link:hover {
+  font-weight: 700;
+}
+.custom-link:hover::after {
+  border: 2px solid #f74700;
+  width: 100%;
+}
+.copyright {
+  font-size: 0.7rem;
+  z-index: 0;
+}
+@media screen and (max-width: 400px) {
+  .custom-search-button {
+    width: 30%;
   }
-.promo-title{
-    font-size: 4rem;
-    color: #9c4668;
-    font-weight: bolder;
 }
-h4{
-    color: #072540;
-}
-.repo-input{
-    max-width: 900px;
-}
-.btn{
-    background-color: #072540!important;
-}
-.status{
-    text-align: center;
-    /* padding: 0% 40%; */
-    font-size: 2.5rem;
-}
-
-/* Media Queries */
-@media screen and (max-width:481px) {
-  
-    .promo-title {
-        font-size: 2rem;
-    }
-}
-
-
-@media screen and (max-width:1000px) {
-    
-    body{
-        width: 100%;
-    }
-    
+@media screen and (min-width: 980px) {
+  .hacktoberfest-logo {
+    width: 50% !important;
+  }
+  .repo-input {
+    width: 70% !important;
+  }
 }

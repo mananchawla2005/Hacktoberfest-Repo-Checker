@@ -1,0 +1,88 @@
+.preloader {
+  z-index: 1031 !important;
+}
+.preloader-logo {
+  -webkit-animation-name: bounce;
+  animation-name: bounce;
+  -webkit-animation-duration: 0.8s;
+  animation-duration: 0.8s;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  height: 100px;
+  width: 100px;
+  -webkit-transform-origin: bottom;
+  -ms-transform-origin: bottom;
+  transform-origin: bottom;
+}
+@-webkit-keyframes bounce {
+  0% {
+    -webkit-transform: translateY(0px) scaleY(0.8);
+    transform: translateY(0px) scaleY(0.8);
+  }
+  50% {
+    -webkit-transform: translateY(-30px) scaleY(1);
+    transform: translateY(-30px) scaleY(1);
+  }
+  100% {
+    -webkit-transform: translateY(0px) scaleY(0.8);
+    transform: translateY(0px) scaleY(0.8);
+  }
+}
+@keyframes bounce {
+  0% {
+    -webkit-transform: translateY(0px) scaleY(0.8);
+    transform: translateY(0px) scaleY(0.8);
+  }
+  50% {
+    -webkit-transform: translateY(-30px) scaleY(1);
+    transform: translateY(-30px) scaleY(1);
+  }
+  100% {
+    -webkit-transform: translateY(0px) scaleY(0.8);
+    transform: translateY(0px) scaleY(0.8);
+  }
+}
+
+/* Dots Animation */
+@-webkit-keyframes scaleInOut {
+  0% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+  50% {
+    -webkit-transform: scale(0.8, 0.8);
+    transform: scale(0.8, 0.8);
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+}
+@keyframes scaleInOut {
+  0% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+  50% {
+    -webkit-transform: scale(0.8, 0.8);
+    transform: scale(0.8, 0.8);
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+}
+.dot-1::before {
+  -webkit-animation: scaleInOut 0.8s ease-in-out 0.1s infinite;
+  animation: scaleInOut 0.8s ease-in-out 0.1s infinite;
+}
+.dot-2::before {
+  -webkit-animation: scaleInOut 0.8s ease-in-out 0.3s infinite;
+  animation: scaleInOut 0.8s ease-in-out 0.3s infinite;
+}
+.dot-3::before {
+  -webkit-animation: scaleInOut 0.8s ease-in-out 0.7s infinite;
+  animation: scaleInOut 0.8s ease-in-out 0.7s infinite;
+}
