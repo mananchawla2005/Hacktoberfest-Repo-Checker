@@ -24,12 +24,13 @@
     <title>Hacktoberfest Repository Checker</title>
     <link rel="stylesheet" href="/css/not-october.css">
     <script>
-      var next_hf_date = new Date("October 01, 2021 00:00:00"); 
+      var next_hf_date = new Date("October 01, 2022 00:00:00"); 
       var timing = setInterval( 
         function () {
   
           var currentDate = new Date().getTime(); 
           var timeLeft = next_hf_date - currentDate; 
+          console.log(timeLeft)
   
           var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24)); 
           if (days < 10) days="0"+days; 
