@@ -219,4 +219,4 @@ app.get("/api", async (req, res) => {
   }
 });
 
-app.listen(process.env.SECRET || 80, () => console.log("Listening on port 80"));
+app.listen(process.env.PORT || 80, () => console.log("Listening on port 80"));
