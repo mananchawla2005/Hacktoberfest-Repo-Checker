@@ -4,7 +4,7 @@
 }
 body {
   overflow: hidden;
-  height: 100vh;
+  min-height: 100vh;
   background-repeat: repeat-x;
   box-sizing: border-box;
 }
@@ -116,4 +116,23 @@ body {
 }
 .text-hactober img{
   height: 100%;
+  filter: drop-shadow(rgba(255, 215, 77, 0.6) -1px -1px 2px)
+    drop-shadow(rgba(124, 127, 255, 0.6) 1px 1px 2px);
+}
+.modal-body{
+  height: 230px;
+}
+.modal-body img{
+  height: 100%;
+  filter: drop-shadow(rgba(255, 215, 77, 0.6) -1px -1px 2px)
+    drop-shadow(rgba(124, 127, 255, 0.6) 1px 1px 2px);
+}
+.repo-info{
+  color: #170f1e;
+}
+.remove-button{
+  cursor: pointer;
+}
+.navbar-toggler{
+  color: #fff;
 }
