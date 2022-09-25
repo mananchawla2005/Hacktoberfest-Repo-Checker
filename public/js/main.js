@@ -87,6 +87,9 @@ function toggleClasses() {
   const modalContent = document.querySelector(".modal-content");
   const modalLogo = document.querySelector(".model-logo");
   const modalCloseButton = document.querySelector(".button-close");
+  const copyRight = document.querySelector(".copyright");
+  copyRight.classList.toggle("copyright-light")
+  copyRight.classList.toggle("copyright-dark")
   modalContent.classList.toggle("bg-light");
   modalContent.classList.toggle("bg-dark");
   modalCloseButton.classList.toggle("theme-light-orange");

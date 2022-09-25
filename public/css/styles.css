@@ -108,8 +108,8 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  filter: drop-shadow(rgba(255, 215, 77, 0.6) -1px -1px 2px)
-    drop-shadow(rgba(124, 127, 255, 0.6) 1px 1px 2px);
+  filter: drop-shadow(rgba(226, 192, 66, 0.6) -1px -1px 2px)
+    drop-shadow(rgba(107, 109, 221, 0.664) 1px 1px 2px);
 }
 .text-hactober{
   height: 230px;
