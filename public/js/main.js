@@ -82,6 +82,7 @@ function toggleClasses() {
   const searchButton = document.querySelector(".custom-search-button");
   const heroLogo = document.querySelector(".hacktoberfest-logo");
   const mainLogo = document.querySelector(".mainLogo");
+  const navBarTogler = document.querySelector(".navbar-toggler");
   const navLinks = document.querySelectorAll(".custom-link");
   const navbar = document.querySelector(".custom-nav");
   const modalContent = document.querySelector(".modal-content");
@@ -104,6 +105,8 @@ function toggleClasses() {
   });
   themeTogglerButton.classList.toggle("theme-light-green");
   themeTogglerButton.classList.toggle("theme-dark-orange");
+  navBarTogler.classList.toggle('nav-light')
+  navBarTogler.classList.toggle('nav-dark')
   navbar.classList.toggle("bg-light");
   navbar.classList.toggle("bg-dark");
   let currentTheme = heroLogo.dataset.theme;
