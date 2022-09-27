@@ -133,6 +133,9 @@ body {
 .remove-button{
   cursor: pointer;
 }
-.navbar-toggler{
+.nav-light{
   color: #fff;
+}
+.nav-dark{
+  color: #1f1c1c;
 }
