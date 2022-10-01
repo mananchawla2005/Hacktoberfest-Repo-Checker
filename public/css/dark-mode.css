@@ -5,7 +5,7 @@
   --theme-copyright: #d2d1c4;
 
   --theme-dark-bg: #170f1e;
-  --theme-dark-white: #e5e1e6;
+  --theme-dark-white: rgb(229, 225, 230);
   --theme-dark-orange: #b53a26;
   --theme-dark-green: #505c4c;
 }
@@ -53,10 +53,10 @@
 .theme-dark-green {
   background-color: var(--theme-dark-green) !important;
 }
-.copyright-dark {
+.copyright-dark{
   color: var(--theme-copyright) !important;
 }
-.copyright-light {
+.copyright-light{
   color: var(--theme-light-orange) !important;
 }
 @media screen and (max-height: 500px) {
