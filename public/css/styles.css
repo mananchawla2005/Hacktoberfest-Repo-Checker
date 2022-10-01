@@ -35,8 +35,8 @@ body {
   height: 42px;
   border: none;
   outline: none;
-  color: white;
-  background-color: red;
+  color: #fff;
+  background-color: #ff0000;
 }
 .custom-link {
   -webkit-transition: 0.1s ease-out;
@@ -111,31 +111,31 @@ body {
   filter: drop-shadow(rgba(226, 192, 66, 0.6) -1px -1px 2px)
     drop-shadow(rgba(107, 109, 221, 0.664) 1px 1px 2px);
 }
-.text-hactober{
+.text-hactober {
   height: 230px;
 }
-.text-hactober img{
+.text-hactober img {
   height: 100%;
   filter: drop-shadow(rgba(255, 215, 77, 0.6) -1px -1px 2px)
     drop-shadow(rgba(124, 127, 255, 0.6) 1px 1px 2px);
 }
-.modal-body{
+.modal-body {
   height: 230px;
 }
-.modal-body img{
+.modal-body img {
   height: 100%;
   filter: drop-shadow(rgba(255, 215, 77, 0.6) -1px -1px 2px)
     drop-shadow(rgba(124, 127, 255, 0.6) 1px 1px 2px);
 }
-.repo-info{
+.repo-info {
   color: #170f1e;
 }
-.remove-button{
+.remove-button {
   cursor: pointer;
 }
-.nav-light{
+.nav-light {
   color: #fff;
 }
-.nav-dark{
+.nav-dark {
   color: #1f1c1c;
 }
