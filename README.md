@@ -5,7 +5,7 @@
 <p align="center">
 <strong><a href="#Installation">Install</a></strong>
 |
-<strong><a href="https://hfchecker.com">🔗Demo</a></strong>
+<strong><a href="https://hacktoberfest.cf/">🔗Demo</a></strong>
 |
 <strong><a href="#API">API</a></strong>
 |
