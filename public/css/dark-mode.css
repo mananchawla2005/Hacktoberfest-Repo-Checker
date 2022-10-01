@@ -1,12 +1,13 @@
 :root {
   --theme-light-bg: #f4f0e1;
   --theme-light-green: #677662;
-  --theme-light-orange: #f74700;
+  --theme-light-orange: #212529;
   --theme-copyright: #d2d1c4;
 
-  --theme-dark-bg: #595852;
-  --theme-dark-green: #91a88c;
+  --theme-dark-bg: #170f1e;
+  --theme-dark-white: rgb(229, 225, 230);
   --theme-dark-orange: #b53a26;
+  --theme-dark-green: #505c4c;
 }
 .theme-toggler-container {
   position: fixed;
@@ -29,6 +30,10 @@
 }
 .bg-dark {
   background-color: var(--theme-dark-bg) !important;
+  background-image: url("../grain-dark.png");
+  color: rgb(229, 225, 230);
+  background-size: auto;
+  background-repeat: repeat;
 }
 .theme-light-orange {
   background-color: var(--theme-light-orange) !important;
@@ -37,7 +42,7 @@
   color: var(--theme-light-orange) !important;
 }
 .theme-dark-green-link {
-  color: var(--theme-dark-green) !important;
+  color: var(--theme-dark-white) !important;
 }
 .theme-dark-orange {
   background-color: var(--theme-dark-orange) !important;
@@ -48,8 +53,11 @@
 .theme-dark-green {
   background-color: var(--theme-dark-green) !important;
 }
-.theme-copyright {
+.copyright-dark{
   color: var(--theme-copyright) !important;
+}
+.copyright-light{
+  color: var(--theme-light-orange) !important;
 }
 @media screen and (max-height: 500px) {
   .theme-toggler-container {
