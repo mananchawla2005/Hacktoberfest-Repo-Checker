@@ -1,10 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400&display=swap");
 * {
-  font-family: "Poppins", sans-serif;
+  font-family: "JetBrains Mono", monospace;
 }
 body {
   overflow: hidden;
-  height: 100vh;
+  min-height: 100vh;
+  background-repeat: repeat-x;
+  box-sizing: border-box;
 }
 /* Modal */
 .custom-modal {
@@ -34,12 +36,14 @@ body {
   border: none;
   outline: none;
   color: white;
+  background-color: red;
 }
 .custom-link {
   -webkit-transition: 0.1s ease-out;
   -o-transition: 0.1s ease-out;
   transition: 0.1s ease-out;
   position: relative;
+  color: rgb(229, 225, 230);
 }
 .list-group-item > p {
   overflow: auto;
@@ -53,24 +57,13 @@ body {
 .list-group-item > p::-webkit-scrollbar {
   display: none;
 }
-.custom-link::after {
-  content: "";
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  width: 0%;
-  border: 2px solid transparent;
-  -webkit-transition: 0.2s ease-out;
-  -o-transition: 0.2s ease-out;
-  transition: 0.2s ease-out;
+
+.theme-dark-green-link.custom-link:hover {
+  opacity: 1;
+  text-shadow: rgb(255 215 77 / 60%) -1px -1px 6px,
+    rgb(124 127 255 / 60%) 1px 1px 6px;
 }
-.custom-link:hover {
-  font-weight: 700;
-}
-.custom-link:hover::after {
-  border: 2px solid #f74700;
-  width: 100%;
-}
+
 .copyright {
   font-size: 0.7rem;
   z-index: 0;
@@ -87,4 +80,62 @@ body {
   .repo-input {
     width: 70% !important;
   }
+}
+.container-fluid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo .navbar-brand .d {
+  height: 60px;
+  width: 60px;
+  position: relative;
+}
+.navbar-brand .d svg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  filter: drop-shadow(rgba(255, 215, 77, 0.6) -1px -1px 2px)
+    drop-shadow(rgba(124, 127, 255, 0.6) 1px 1px 2px);
+}
+.navbar-brand .d .h {
+  width: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(rgba(226, 192, 66, 0.6) -1px -1px 2px)
+    drop-shadow(rgba(107, 109, 221, 0.664) 1px 1px 2px);
+}
+.text-hactober{
+  height: 230px;
+}
+.text-hactober img{
+  height: 100%;
+  filter: drop-shadow(rgba(255, 215, 77, 0.6) -1px -1px 2px)
+    drop-shadow(rgba(124, 127, 255, 0.6) 1px 1px 2px);
+}
+.modal-body{
+  height: 230px;
+}
+.modal-body img{
+  height: 100%;
+  filter: drop-shadow(rgba(255, 215, 77, 0.6) -1px -1px 2px)
+    drop-shadow(rgba(124, 127, 255, 0.6) 1px 1px 2px);
+}
+.repo-info{
+  color: #170f1e;
+}
+.remove-button{
+  cursor: pointer;
+}
+.nav-light{
+  color: #fff;
+}
+.nav-dark{
+  color: #1f1c1c;
 }
