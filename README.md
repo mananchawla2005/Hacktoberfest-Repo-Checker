@@ -24,7 +24,7 @@
 
 ## **Installation**
 
-1\. Fork the project 2\. Clone the project with `git clone https://<yourgithubusername>/Hacktoberfest-Repo-Checker.git ` 3\. Then cd in your project folder with `cd Hacktoberfest-Repo-Checker ` 4\. Then install npm packages with `npm i` 5\. Start the server with `node .` 6\. Your server should be running at `https://localhost:8080`
+1\. Fork the project<br> 2\. Clone the project with `git clone https://<yourgithubusername>/Hacktoberfest-Repo-Checker.git ` <br>3\. Then cd in your project folder with `cd Hacktoberfest-Repo-Checker `<br> 4\. Then install npm packages with `npm i`<br> 5\. Start the server with `node .`<br> 6\. Your server should be running at `https://localhost:8080`
 
 ## **🔌API**
 
