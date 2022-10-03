@@ -5,7 +5,7 @@
 <p align="center">
 <strong><a href="#Installation">Install</a></strong>
 |
-<strong><a href="https://hfchecker.com">🔗Demo</a></strong>
+<strong><a href="https://hacktoberfest.cf">🔗Demo</a></strong>
 |
 <strong><a href="#API">API</a></strong>
 |
@@ -28,7 +28,7 @@
 
 ## **🔌API**
 
-- The project also has a public api currently in testing. You can access it at `hfchecker.com/api?url=<url of="" repo="">`
+- The project also has a public api currently in testing. You can access it at `https://hacktoberfest.cf/api?url=%repo_url%`
 
 ## **💕Contributing**
 
