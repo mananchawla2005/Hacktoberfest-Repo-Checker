@@ -28,7 +28,7 @@
 
 ## **🔌API**
 
-- The project also has a public api currently in testing. You can access it at `hfchecker.com/api?url=<url of="" repo="">`
+- The project also has a public api currently in testing. You can access it at `https://hacktoberfest.cf/api?url=%repo_url%`
 
 ## **💕Contributing**
 
