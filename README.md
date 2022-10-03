@@ -38,4 +38,14 @@
 
 <img src="https://fosshost.org/img/fosshost-logo.png" />
 
+## Thanks to all Contributors
+<a href = "https://github.com/mananchawla2005/developer-roadmap/graphs/contributors">
+   <img src = "https://contrib.rocks/image?repo=mananchawla2005/Hacktoberfest-Repo-Checker"/>
+ </a>
+
+
+
+
+
 # **Happy Hacking!**
+If you liked this project, please leave a 🌟
