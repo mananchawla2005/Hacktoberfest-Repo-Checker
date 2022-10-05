@@ -5,7 +5,7 @@
 <p align="center">
 <strong><a href="#Installation">Install</a></strong>
 |
-<strong><a href="https://hfchecker.com">🔗Demo</a></strong>
+<strong><a href="https://hacktoberfest.cf">🔗Demo</a></strong>
 |
 <strong><a href="#API">API</a></strong>
 |
@@ -24,11 +24,11 @@
 
 ## **Installation**
 
-1\. Fork the project 2\. Clone the project with `git clone https://<yourgithubusername>/Hacktoberfest-Repo-Checker.git ` 3\. Then cd in your project folder with `cd Hacktoberfest-Repo-Checker ` 4\. Then install npm packages with `npm i` 5\. Start the server with `node .` 6\. Your server should be running at `https://localhost:8080`
+1\. Fork the project<br> 2\. Clone the project with `git clone https://<yourgithubusername>/Hacktoberfest-Repo-Checker.git ` <br>3\. Then cd in your project folder with `cd Hacktoberfest-Repo-Checker `<br> 4\. Then install npm packages with `npm i`<br> 5\. Start the server with `node .`<br> 6\. Your server should be running at `https://localhost:8080`
 
 ## **🔌API**
 
-- The project also has a public api currently in testing. You can access it at `hfchecker.com/api?url=<url of="" repo="">`
+- The project also has a public api currently in testing. You can access it at `https://hacktoberfest.cf/api?url=%repo_url%`
 
 ## **💕Contributing**
 
@@ -38,4 +38,14 @@
 
 <img src="https://fosshost.org/img/fosshost-logo.png" />
 
+## Thanks to all Contributors
+<a href = "https://github.com/mananchawla2005/developer-roadmap/graphs/contributors">
+   <img src = "https://contrib.rocks/image?repo=mananchawla2005/Hacktoberfest-Repo-Checker"/>
+ </a>
+
+
+
+
+
 # **Happy Hacking!**
+If you liked this project, please leave a 🌟

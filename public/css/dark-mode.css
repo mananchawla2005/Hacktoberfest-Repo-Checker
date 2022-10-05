@@ -22,8 +22,11 @@
   border: none;
   outline: none !important;
   font-size: 1.5rem !important;
-  background-color: var(--theme-light-green);
+  background-color: rgb(20, 18, 18);
   color: white;
+}
+.theme-toggler-button:hover{
+  background-color: #4f4646;
 }
 .bg-light {
   background-color: var(--theme-light-bg) !important;
@@ -48,10 +51,16 @@
   background-color: var(--theme-dark-orange) !important;
 }
 .theme-light-green {
-  background-color: var(--theme-light-green) !important;
+  background-color: #4f4646 !important;
+}
+.theme-light-green:hover {
+  background-color: #7a6f6f !important;
 }
 .theme-dark-green {
-  background-color: var(--theme-dark-green) !important;
+  background-color: #4f4646 !important;
+}
+.theme-dark-green:hover {
+  background-color: #7a6f6f !important;
 }
 .copyright-dark{
   color: var(--theme-copyright) !important;
