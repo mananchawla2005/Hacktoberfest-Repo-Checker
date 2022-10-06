@@ -2,6 +2,7 @@
 <p align="center">Checks if the given repository is participating to hacktoberfest</p>
 
 ---
+
 <p align="center">
 <strong><a href="#Installation">Install</a></strong>
 |
@@ -21,7 +22,6 @@
   <p align="center"><img src="./img/dark.png"></img></p>
 </details>
 
-
 ## **Installation**
 
 1\. Fork the project<br> 2\. Clone the project with `git clone https://<yourgithubusername>/Hacktoberfest-Repo-Checker.git ` <br>3\. Then cd in your project folder with `cd Hacktoberfest-Repo-Checker `<br> 4\. Then install npm packages with `npm i`<br> 5\. Start the server with `node .`<br> 6\. Your server should be running at `https://localhost:8080`
@@ -39,13 +39,11 @@
 <img src="https://fosshost.org/img/fosshost-logo.png" />
 
 ## Thanks to all Contributors
-<a href = "https://github.com/mananchawla2005/developer-roadmap/graphs/contributors">
+
+<a href = "https://github.com/mananchawla2005/Hacktoberfest-Repo-Checker/graphs/contributors">
    <img src = "https://contrib.rocks/image?repo=mananchawla2005/Hacktoberfest-Repo-Checker"/>
  </a>
 
-
-
-
-
 # **Happy Hacking!**
+
 If you liked this project, please leave a 🌟
