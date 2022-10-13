@@ -139,3 +139,7 @@ body {
 .nav-dark{
   color: #1f1c1c;
 }
+
+.card p {
+  color: #212529 !important;
+}
