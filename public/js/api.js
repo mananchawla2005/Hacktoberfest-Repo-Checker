@@ -72,9 +72,9 @@ const modalDetails = (data) => {
   if (data.status == 200 && data.valid) {
     result.innerHTML = `This repository is <span class="fw-bold theme-light-orange-link">${eligibleOrNot(
       data
-    )} ${openOrNot(data)}</span> for Hactoberfest 2021`;
+    )} ${openOrNot(data)}</span> for Hacktoberfest 2021`;
   } else if (data.status == 15) {
-    result.innerHTML = `This repository is <span class="fw-bold theme-light-orange-link">banned</span> for Hactoberfest 2021`;
+    result.innerHTML = `This repository is <span class="fw-bold theme-light-orange-link">banned</span> for Hacktoberfest 2021`;
   }
 };
 document.querySelector(".button-close").addEventListener("click", toggleModal);

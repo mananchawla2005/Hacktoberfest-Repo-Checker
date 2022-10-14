@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="title" content="Hacktoberfest Repository Checker">
+    <meta name="description"
+        content="A website to check if a repository or a pull request is eligible for hacktoberfest or not">
+    <meta name="keywords" content="hacktoberfest, hf, hfchecker, repositorychecker, checker, opensource">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hfchecker.com">
+    <meta property="og:title" content="Hacktoberfest Repository Checker">
+    <meta property="og:description"
+        content="A website to check if a repository or a pull request is eligible for hacktoberfest or not">
+    <meta property="og:image"
+        content="https://user-images.githubusercontent.com/55191873/133085921-ddfbdb3c-97ef-4681-b9c7-0f65a97b5151.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="hfchecker.com">
+    <meta property="twitter:title" content="Hacktoberfest Repository Checker">
+    <meta property="twitter:description"
+        content="A website to check if a repository or a pull request is eligible for hacktoberfest or not">
+    <meta property="twitter:image"
+        content="https://user-images.githubusercontent.com/55191873/133085921-ddfbdb3c-97ef-4681-b9c7-0f65a97b5151.png">
+    <title>Hacktoberfest Repository Checker</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link href="/css/dark-mode.css" rel="stylesheet" type="text/css" />
+    <link href="/css/styles.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/css/loaders-animation.css" type="text/css" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="theme-color" content="#f74700" />
+    <meta name="title" content="Hacktoberfest Repository Checker" />
+    <meta name="description"
+        content="This website can be used to check if your repository is eligible for Hacktoberfest 2021" />
+    <meta name="keywords" content="Hacktoberfest, Hacktoberfest 2021, Digital Ocean" />
+    <meta name="language" content="English" />
+    <meta name="author" content="Manan Chawla" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+</head>
+
+<body class="bg-light" style="overflow: auto; min-height: 100%;">
+    <!-- Preloader -->
+    <!-- <div class="
+        preloader
+        position-fixed
+        top-0
+        end-0
+        start-0
+        bottom-0
+        bg-light
+        d-flex
+        align-items-center
+        justify-content-center
+        d-block
+    ">
+        <img src="/svg/logo.svg" class="preloader-logo" alt="preloader" />
+    </div> -->
+    <%- include('navbar.ejs') -%>
+
+        <!-- Banner -->
+        <section id="banner" class="repo-content h-100 pt-5 border-0 bg-light">
+            <h2 class="text-center pb-5 ">Repos To Contribute to: </h2>
+            <div class="container pb-5">
+                <div class="row">
+                    <% repos.forEach((repo, i) => { %>
+                        <!-- Start Of Card  -->
+                        <div class="col-md-4">
+                            <div class="card mb-3" style="height: 250px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <a href="<%= repo.html_url %>" target="_blank" style="color: #212529;">
+                                            <%= repo.full_name %>
+                                        </a>
+                                    </h5>
+                                    <p class="card-text star-count"><i class="bi bi-star-fill"></i> <%= repo.stargazers_count %> stars</p>
+                                    <p class="card-text user"><i class="bi bi-person-fill"></i> <%= repo.owner.login %></p>
+                                    <button><%= repo.language %></button>
+                                </div>
+                            </div>
+                        </div>
+                    <% }) %>
+                    <!-- End of Card  -->
+                </div>
+            </div>
+
+            <div class="theme-toggler-container">
+                <button class="theme-toggler-button theme-light-orange shadow-lg">
+                    <i class="bi bi-moon-fill theme-toggler-icon"></i>
+                </button>
+            </div>
+
+            <div class="bottom-0 end-0 start-0">
+                <p class="text-center copyright copyright-light">
+                    This Website is made under Hacktoberfest 2022. Logo Copyright is
+                    reserved by <strong>Digital Ocean</strong>.
+                </p>
+            </div>
+        </section>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+        <script src="/js/repos.js" type="text/javascript" defer></script>
+</body>
+
+</html>

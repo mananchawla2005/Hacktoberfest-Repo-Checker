@@ -219,4 +219,23 @@ app.get("/api", async (req, res) => {
   }
 });
 
+app.get("/repos", async (req, res) => {
+  try {
+    const result = await octokit.request("GET /search/repositories", {
+      accept: 'application/vnd.github+json',
+      q: 'hacktoberfest',
+      sort: 'updated',
+      order: 'desc'
+    });
+
+    const repos = result.data.items
+
+    res.render('repos', { repos: repos })
+    
+  } catch (error) {
+    // console.log(`Error! Status: ${error.status}. Message: ${error.response.data.message}`)
+    console.error(error)
+  }
+});
+
 app.listen(process.env.PORT || 80, () => console.log("Listening on port 80"));
