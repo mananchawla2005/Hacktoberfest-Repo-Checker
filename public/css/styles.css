@@ -36,7 +36,10 @@ body {
   border: none;
   outline: none;
   color: white;
-  background-color: red;
+  background-color: rgb(20, 18, 18);
+}
+.custom-search-button:hover {
+  background-color: #4f4646;
 }
 .custom-link {
   -webkit-transition: 0.1s ease-out;
