@@ -143,6 +143,13 @@ body {
   color: #1f1c1c;
 }
 
-.card p {
+.card svg, .card p {
   color: #212529 !important;
 }
+
+.btn-view {
+  background-color: #212529 !important;
+  border-color: white;
+  color: #fff;
+}
+
