@@ -143,6 +143,16 @@ body {
   color: #1f1c1c;
 }
 
-.card p {
+.card svg, .card p, .modal-header {
   color: #212529 !important;
+}
+
+.modal-content {
+  height: 90vh;
+}
+
+.btn-view {
+  background-color: #212529 !important;
+  border-color: white;
+  color: #fff;
 }
