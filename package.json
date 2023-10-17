@@ -16,6 +16,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "github-api": "^3.3.0",
+    "node-fetch": "^3.3.2",
     "npm": "^7.24.0",
     "parse-url": "^5.0.2"
   }
