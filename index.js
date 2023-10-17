@@ -4,7 +4,7 @@ const app = express();
 const { Octokit } = require("@octokit/core");
 const session = require("express-session");
 const parseurl = require("parse-url");
-const octokit = new Octokit({ auth: process.env.TOKEN });
+const octokit = new Octokit({ auth: process.env.GH_TOKEN });
 const octoberChecker = require("./utils/octoberChecker");
 app.use(
   session({ secret: process.env.SECRET, resave: false, saveUninitialized: false })
@@ -220,21 +220,33 @@ app.get("/api", async (req, res) => {
 });
 
 app.get("/repos", async (req, res) => {
+
   try {
-    const result = await octokit.request("GET /search/repositories", {
-      accept: 'application/vnd.github+json',
+    // Fetch Hacktoberfest repos from GitHub
+    const githubResponse = await octokit.request('GET /search/repositories', {
       q: 'hacktoberfest',
       sort: 'updated',
       order: 'desc'
     });
 
-    const repos = result.data.items
+    // Fetch Hacktoberfest repos from GitLab (example API endpoint, adjust as needed)
+    const gitlabResponse = await fetch('https://gitlab.com/api/v4/projects?search=hacktoberfest', {
+      method: 'GET',
+      headers: {
+        'Private-Token': process.env.GITLAB_ACCESS_TOKEN
+      }
+    });
+    const gitlabRepos = await gitlabResponse.json();
 
-    res.render('repos', { repos: repos })
-    
+    // Render the repos.ejs template with GitHub and GitLab data
+    res.render('repos', {
+      githubRepos: githubResponse.data.items,
+      gitlabRepos: gitlabRepos
+    });
+
   } catch (error) {
-    // console.log(`Error! Status: ${error.status}. Message: ${error.response.data.message}`)
-    console.error(error)
+    console.error(error);
+    res.status(500).send('Error fetching Hacktoberfest repos');
   }
 });
 

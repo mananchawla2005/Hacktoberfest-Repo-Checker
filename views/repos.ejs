@@ -69,10 +69,32 @@
 
         <!-- Banner -->
         <section id="banner" class="repo-content h-100 pt-5 border-0 bg-light">
-            <h2 class="text-center pb-5 ">Repos To Contribute to: </h2>
+            <h2 class="text-center pb-5">Hacktoberfest Repositories:  </h2>
+
+            <div class="row px-5">
+                <div class="container-fluid">
+                    <div class="col-md-6 p-3">
+                        <div class="card" style="height: 500px;">
+                            <div class="card-body">
+                                <h4 class="card-title text-center">GITHUB</h4>
+                                <p class="card-text"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 p-3">
+                        <div class="card" style="height: 500px;">
+                            <div class="card-body">
+                                <h4 class="card-title text-center">GITLAB</h4>
+                                <p class="card-text"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="container pb-5">
+                <h3>Github Repos: </h3>
                 <div class="row">
-                    <% repos.forEach((repo, i) => { %>
+                    <% githubRepos.forEach((repo, i) => { %>
                         <!-- Start Of Card  -->
                         <div class="col-md-4">
                             <div class="card mb-3" style="height: 250px;">
@@ -85,6 +107,31 @@
                                     <p class="card-text star-count"><i class="bi bi-star-fill"></i> <%= repo.stargazers_count %> stars</p>
                                     <p class="card-text user"><i class="bi bi-person-fill"></i> <%= repo.owner.login %></p>
                                     <button><%= repo.language %></button>
+                                </div>
+                            </div>
+                        </div>
+                    <% }) %>
+                    <!-- End of Card  -->
+                </div>
+                
+                <h3>Gitlab Repos: </h3>
+                <div class="row">
+                    <% gitlabRepos.forEach((repo, i) => { %>
+                        <!-- Start Of Card  -->
+                        <div class="col-md-4">
+                            <div class="card mb-3" style="height: 250px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <a href="<%= repo.web_url %>" target="_blank" style="color: #212529;">
+                                            <%= repo.name %>
+                                        </a>
+                                    </h5>
+                                    <p class="card-text star-count">
+                                        <i class="bi bi-star-fill"></i> <%= repo.star_count %> stars
+                                    </p>
+                                    <p class="card-text user">
+                                        <i class="bi bi-person-fill"></i> <%= repo.namespace.name %>
+                                    </p>
                                 </div>
                             </div>
                         </div>
