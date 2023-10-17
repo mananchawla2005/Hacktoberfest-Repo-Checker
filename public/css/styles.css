@@ -143,7 +143,7 @@ body {
   color: #1f1c1c;
 }
 
-.card svg, .card p {
+.card svg, .card p, .modal-header {
   color: #212529 !important;
 }
 
